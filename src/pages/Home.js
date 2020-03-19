@@ -6,7 +6,7 @@ function Home () {
 
 const style = {
     paddingBottom: '5rem', 
-    margin: '2rem'
+    margin: '5rem'
 }
 
     return(
