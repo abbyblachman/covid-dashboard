@@ -12,8 +12,8 @@ const style = {
     return(
         <div className="container" style={style}>
             
-    <Component></Component>
-    <Leaders></Leaders>
+    <Component styles={style}></Component>
+    <Leaders styles={style}></Leaders>
     </div>
     )
 }
