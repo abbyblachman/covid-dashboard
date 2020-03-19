@@ -24,14 +24,13 @@ const styleSmall = {
     return(
     <div className="container" style={style}>
    
-   <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
-    <Component styles={style}></Component>
-    <Leaders styles={style}></Leaders>
-    </MediaQuery>
-    <MediaQuery maxDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
+   <MediaQuery maxDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
     <Component styles={styleSmall}></Component>
     <Leaders styles={styleSmall}></Leaders>
     </MediaQuery>
+    <Component styles={styleSmall}></Component>
+    <Leaders styles={styleSmall}></Leaders>
+
 
     </div>
     )
