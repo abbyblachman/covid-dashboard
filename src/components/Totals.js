@@ -20,8 +20,8 @@ render () {
         {this.props.data.forEach(data => {
             countNeg += data.negative;
         })}
-        <div>{count} people have tested positive since testing data began being recorded on March 4.</div>
-        <div>{countNeg} people have tested negative since testing began being recorded on March 4.</div>
+        <div><strong>{count}</strong> people have tested positive since testing data began being recorded on March 4.</div>
+        <div><strong>{countNeg}</strong> people have tested negative since testing began being recorded on March 4.</div>
         </>
     
     )

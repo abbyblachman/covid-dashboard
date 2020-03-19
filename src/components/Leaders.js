@@ -45,11 +45,11 @@ const style = {
     marginRight: 'auto', 
     marginTop: '3rem',
     width: '40rem', 
-    fontSize: '1.5rem'
+    fontSize: '1rem'
 }
 
 const span = {
-    fontSize: '2rem', 
+    fontSize: '1.5rem', 
     paddingBottom: '1.5rem'
 }
 

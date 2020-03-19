@@ -45,16 +45,16 @@ const styleDiv = {
     marginRight: 'auto', 
     marginTop: '8rem',
     width: '40rem', 
-    fontSize: '1.5rem'
+    fontSize: '1rem'
 }
 
 const form = {
-    padding: '3rem', 
+    padding: '1.5rem', 
     textAlign: 'center', 
 }
 
 const formSpan = {
-    fontSize: '2rem'
+    fontSize: '1.5rem'
 }
 
         return (
@@ -120,8 +120,8 @@ const formSpan = {
                 </div>
         
                 <div>
-               <div>{iLPositive} people tested positive for COVID-19 in this state today.</div>
-               <div>{ilNegative} people tested negative for COVID-19 in this state today.</div>
+               <div><strong>{iLPositive}</strong> people tested positive for COVID-19 in this state today.</div>
+               <div><strong>{ilNegative}</strong> people tested negative for COVID-19 in this state today.</div>
                </div>
             
             <Totals data={data}></Totals>
