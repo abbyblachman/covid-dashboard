@@ -41,17 +41,14 @@ axios
 }
 
 const style = {
-    marginLeft: 'auto', 
-    marginRight: 'auto', 
-    marginTop: '3rem',
-    width: '40rem', 
-    fontSize: '1rem', 
-    paddingLeft: '10rem', 
-    paddingRight: '10rem'
+    // marginLeft: 'auto', 
+    // marginRight: 'auto', 
+  
 }
 
 const span = {
     fontSize: '1.5rem', 
+    paddingTop: '1.5rem', 
     paddingBottom: '1.5rem'
 }
 

@@ -10,7 +10,13 @@ function Home () {
 
 const style = {
     paddingBottom: '5rem', 
-    margin: '7rem'
+    marginLeft: 'auto', 
+    marginRight: 'auto',
+    marginTop: '3rem',
+    width: '40rem', 
+    fontSize: '1rem', 
+    paddingLeft: '10rem', 
+    paddingRight: '10rem'
 }
 
 const styleSmall = {
