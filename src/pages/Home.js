@@ -16,7 +16,9 @@ const style = {
 const styleSmall = {
     display: 'flex', 
     flexDirection: 'column', 
-    fontSize: '1.5rem'
+    fontSize: '1.5rem', 
+    marginRight: '7rem', 
+    marginLeft: '7rem'
 }
 
     return(
