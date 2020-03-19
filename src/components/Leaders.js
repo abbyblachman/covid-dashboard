@@ -45,7 +45,9 @@ const style = {
     marginRight: 'auto', 
     marginTop: '3rem',
     width: '40rem', 
-    fontSize: '1rem'
+    fontSize: '1rem', 
+    paddingLeft: '10rem', 
+    paddingRight: '10rem'
 }
 
 const span = {

@@ -45,7 +45,9 @@ const styleDiv = {
     marginRight: 'auto', 
     marginTop: '8rem',
     width: '40rem', 
-    fontSize: '1rem'
+    fontSize: '1rem', 
+    paddingLeft: '10rem', 
+    paddingRight: '10rem'
 }
 
 const form = {

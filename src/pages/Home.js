@@ -10,7 +10,7 @@ function Home () {
 
 const style = {
     paddingBottom: '5rem', 
-    margin: '5rem'
+    margin: '7rem'
 }
 
 const styleSmall = {
@@ -24,13 +24,14 @@ const styleSmall = {
     return(
     <div className="container" style={style}>
    
-   <MediaQuery maxDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
+   <MediaQuery maxDeviceWidth={1223} device={{ deviceWidth: 1599 }}>
     <Component styles={styleSmall}></Component>
     <Leaders styles={styleSmall}></Leaders>
     </MediaQuery>
-    <Component styles={styleSmall}></Component>
-    <Leaders styles={styleSmall}></Leaders>
-
+    <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
+    <Component styles={style}></Component>
+    <Leaders styles={style}></Leaders>
+    </MediaQuery>
 
     </div>
     )
