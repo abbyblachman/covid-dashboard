@@ -148,10 +148,9 @@ const titleSpan = {
                 </div>
         
                 <div>
-               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state.</div>
-               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state.</div>
-                <div><strong>{iLPositive - stateYesterday} </strong>more people have tested positive today than yesterday.</div>
-        <div><strong>{total} </strong>people have been tested in this state so far. That's <strong>{total - totalYesterday} </strong>more people than yesterday.</div>
+               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state. That's {iLPositive - stateYesterday} more than yesterday.</div>
+               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state. </div>
+                <div><strong>{total} </strong>people have been tested in this state so far. That's {total - totalYesterday} more people than yesterday.</div>
                </div>
             
             {/* <Totals data={data}></Totals> */}
