@@ -28,7 +28,8 @@ axios
     res.data.forEach(data => {
         arr.push({
             state: data.state,
-            positive: data.positive})
+            positive: data.positive, 
+            total: data.total})
     })
     arr.sort(function(a, b){ return b.positive - a.positive});
     setPositive(arr);
@@ -41,7 +42,8 @@ axios
                 res.data.forEach(data => {
                     arr.push({
                         state: data.state,
-                        positive: data.positive})
+                        positive: data.positive,
+                        total: data.total})
                 })
                 arr.sort(function(a, b){ return b.positive - a.positive});
                 setPositive(arr);
@@ -66,6 +68,8 @@ axios
     })
 }
 
+
+
 const style = {
     // marginLeft: 'auto', 
     // marginRight: 'auto', 
@@ -83,12 +87,13 @@ const span = {
 
 return(
     <div style={style}>
+        {console.log(stateOne)}
         <div style={span}>States with the most positive tests so far:</div>
-        <div><strong>{stateOne.state}</strong>: {stateOne.positive} cases</div>
-        <div><strong>{stateTwo.state}</strong>: {stateTwo.positive} cases</div>
-        <div><strong>{stateThree.state}</strong>: {stateThree.positive} cases</div>
-        <div><strong>{stateFour.state}</strong>: {stateFour.positive} cases</div>
-        <div><strong>{stateFive.state}</strong>: {stateFive.positive} cases</div>
+<div><strong>{stateOne.state}</strong>: {stateOne.positive} cases. {stateOne.total} tests administered.</div>
+        <div><strong>{stateTwo.state}</strong>: {stateTwo.positive} cases. {stateTwo.total} tests administered.</div>
+        <div><strong>{stateThree.state}</strong>: {stateThree.positive} cases. {stateThree.total} tests administered.</div>
+        <div><strong>{stateFour.state}</strong>: {stateFour.positive} cases. {stateFour.total} tests administered.</div>
+        <div><strong>{stateFive.state}</strong>: {stateFive.positive} cases. {stateFive.total} tests administered.</div>
     </div>
     )
 }

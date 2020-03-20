@@ -10,8 +10,8 @@ const [data, setData] = useState([]);
 const [iLPositive, setILPositive] = useState(0);
 const [ilNegative, setILNegative] = useState(0);
 const [state, setState] = useState();
-
-
+const [stateYesterday, setStateYesterday] = useState(0);
+const [total, setTotal] = useState(0);
 
 
 // useEffect(() => {
@@ -32,13 +32,27 @@ function getData(event) {
         setData(res.data);
         setILPositive(res.data[0].positive);
         setILNegative(res.data[0].negative)
+        setStateYesterday(res.data[1].positive)
+        setTotal(res.data[0].total)
         }
         else {
             alert('No data available at this time')
         }
         
-        })      
+        })
+    // .then(() => {
+    //         Axios
+    //         .get(`https://covidtracking.com/api/states/daily?state=${state}`) 
+    //         .then(res => {
+    //             setStateToday(res.data[0])
+    //             console.log(stateToday)
+    //             // const today = res.data[0].positive
+    //             // console.log(today)
+    //         })
+        
+    // })    
 }
+
 
 const styleDiv = {
     // marginLeft: 'auto', 
@@ -134,6 +148,8 @@ const titleSpan = {
                 <div>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state.</div>
+                <div><strong>{iLPositive - stateYesterday} </strong>more people have tested positive today than yesterday.</div>
+                <div><strong>{total} </strong>people have been tested in this state so far.</div>
                </div>
             
             {/* <Totals data={data}></Totals> */}
