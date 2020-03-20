@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import Component from '../components/Component';
 import Leaders from '../components/Leaders'
 import MediaQuery from 'react-responsive'
+import moment from 'moment';
  
 
 function Home () {
 
-    
+   
 
 const style = {
     paddingBottom: '5rem', 

@@ -12,6 +12,8 @@ const [stateFive, setStateFive] = useState([]);
 const arr = [];
 
 let now = moment().format('YYYYMMDD');
+let startdate = moment().subtract(1, "days").format("YYYYMMDD");
+console.log(startdate)
 
 useEffect(() => {
     getData();
@@ -31,13 +33,37 @@ axios
     arr.sort(function(a, b){ return b.positive - a.positive});
     setPositive(arr);
 })
-.then(() => {
-    setStateOne(arr[0])
-    setStateTwo(arr[1])
-    setStateThree(arr[2])
-    setStateFour(arr[3])
-    setStateFive(arr[4])
-})
+    .then(() => {
+        if (arr.length === 0) {  
+            axios
+            .get(`https://covidtracking.com/api/states/daily?date=${startdate}`)
+            .then(res => {
+                res.data.forEach(data => {
+                    arr.push({
+                        state: data.state,
+                        positive: data.positive})
+                })
+                arr.sort(function(a, b){ return b.positive - a.positive});
+                setPositive(arr);
+            })
+            .then(() => {
+                setStateOne(arr[0])
+                setStateTwo(arr[1])
+                setStateThree(arr[2])
+                setStateFour(arr[3])
+                setStateFive(arr[4])
+            })
+           
+        }
+        else {
+            setStateOne(arr[0])
+            setStateTwo(arr[1])
+            setStateThree(arr[2])
+            setStateFour(arr[3])
+            setStateFive(arr[4]) 
+        }
+    
+    })
 }
 
 const style = {
@@ -64,7 +90,6 @@ return(
         <div><strong>{stateFive.state}</strong>: {stateFive.positive} cases</div>
     </div>
     )
-    
 }
 
 export default Leaders;
