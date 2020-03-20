@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
-import Totals from '../components/Totals';
+// import Totals from '../components/Totals';
 import { relativeTimeRounding } from 'moment';
 
 
@@ -122,11 +122,11 @@ const formSpan = {
                 </div>
         
                 <div>
-               <div><strong>{iLPositive}</strong> people tested positive for COVID-19 in this state today.</div>
-               <div><strong>{ilNegative}</strong> people tested negative for COVID-19 in this state today.</div>
+               <div><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state.</div>
+               <div><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state.</div>
                </div>
             
-            <Totals data={data}></Totals>
+            {/* <Totals data={data}></Totals> */}
             </div>
             
         )

@@ -56,12 +56,12 @@ const span = {
 
 return(
     <div style={style}>
-        <div style={span}>States with the most positive tests today:</div>
-        <div><strong>{stateOne.state}</strong>: {stateOne.positive} new cases</div>
-        <div><strong>{stateTwo.state}</strong>: {stateTwo.positive} new cases</div>
-        <div><strong>{stateThree.state}</strong>: {stateThree.positive} new cases</div>
-        <div><strong>{stateFour.state}</strong>: {stateFour.positive} new cases</div>
-        <div><strong>{stateFive.state}</strong>: {stateFive.positive} new cases</div>
+        <div style={span}>States with the most positive tests so far:</div>
+        <div><strong>{stateOne.state}</strong>: {stateOne.positive} cases</div>
+        <div><strong>{stateTwo.state}</strong>: {stateTwo.positive} cases</div>
+        <div><strong>{stateThree.state}</strong>: {stateThree.positive} cases</div>
+        <div><strong>{stateFour.state}</strong>: {stateFour.positive} cases</div>
+        <div><strong>{stateFive.state}</strong>: {stateFive.positive} cases</div>
     </div>
     )
     
