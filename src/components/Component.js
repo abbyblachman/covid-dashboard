@@ -12,6 +12,7 @@ const [ilNegative, setILNegative] = useState(0);
 const [state, setState] = useState();
 const [stateYesterday, setStateYesterday] = useState(0);
 const [total, setTotal] = useState(0);
+const [totalYesterday, setTotalYesterday] = useState(0);
 
 
 // useEffect(() => {
@@ -34,6 +35,7 @@ function getData(event) {
         setILNegative(res.data[0].negative)
         setStateYesterday(res.data[1].positive)
         setTotal(res.data[0].total)
+        setTotalYesterday(res.data[1].total)
         }
         else {
             alert('No data available at this time')
@@ -149,7 +151,7 @@ const titleSpan = {
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state.</div>
                 <div><strong>{iLPositive - stateYesterday} </strong>more people have tested positive today than yesterday.</div>
-                <div><strong>{total} </strong>people have been tested in this state so far.</div>
+        <div><strong>{total} </strong>people have been tested in this state so far. That's <strong>{total - totalYesterday} </strong>more people than yesterday.</div>
                </div>
             
             {/* <Totals data={data}></Totals> */}
