@@ -75,7 +75,8 @@ const style = {
 const span = {
     fontSize: '1.5rem', 
     paddingTop: '1.5rem', 
-    paddingBottom: '1.5rem'
+    paddingBottom: '1.5rem', 
+    fontFamily: 'Bree Serif'
 }
 
 

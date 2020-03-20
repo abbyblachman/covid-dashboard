@@ -51,17 +51,27 @@ const styleDiv = {
 }
 
 const form = {
-    padding: '1.5rem', 
+    paddingBottom: '1.5rem', 
     textAlign: 'center', 
+    fontFamily: 'Bree Serif'
 }
 
 const formSpan = {
     fontSize: '1.5rem'
 }
 
+const titleSpan = {
+    textAlign: 'center', 
+    fontSize: '2rem', 
+    fontFamily: 'Bree Serif', 
+    marginBottom: '1.5rem'
+}
+
+
         return (
             <div style={styleDiv}>
             <div style={form}>
+            <strong><div style={titleSpan}>COVID-19 BY STATE</div></strong>
             <form className="form" action="#">
             <span style={formSpan}>Choose your state: </span>
             <select value={state} id="state" name="state" onChange={getData}>
@@ -122,8 +132,8 @@ const formSpan = {
                 </div>
         
                 <div>
-               <div><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state.</div>
-               <div><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state.</div>
+               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state.</div>
+               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state.</div>
                </div>
             
             {/* <Totals data={data}></Totals> */}
