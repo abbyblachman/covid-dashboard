@@ -16,8 +16,8 @@ const style = {
     marginTop: '3rem',
     width: '40rem', 
     fontSize: '1rem', 
-    paddingLeft: '10rem', 
-    paddingRight: '10rem'
+    // paddingLeft: '10rem', 
+    // paddingRight: '10rem'
 }
 
 const styleSmall = {
@@ -27,7 +27,8 @@ const styleSmall = {
     marginRight: '2rem', 
     marginLeft: '2rem', 
     paddingLeft: '0rem', 
-    paddingRight: '0rem'
+    paddingRight: '0rem', 
+    textAlign: 'left'
 }
 
     return(
