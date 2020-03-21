@@ -14,7 +14,7 @@ const style = {
     marginLeft: 'auto', 
     marginRight: 'auto',
     marginTop: '3rem',
-    width: '40rem', 
+    width: '23rem', 
     fontSize: '1rem', 
     // paddingLeft: '10rem', 
     // paddingRight: '10rem'
