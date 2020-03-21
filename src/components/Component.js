@@ -80,7 +80,12 @@ const titleSpan = {
     textAlign: 'center', 
     fontSize: '2rem', 
     fontFamily: 'Bree Serif', 
-    marginBottom: '1.5rem'
+    marginBottom: '1rem'
+}
+
+const subHead = {
+    fontFamily: 'Helvetica', 
+    marginTop: '0.5rem'
 }
 
 
@@ -145,6 +150,7 @@ const titleSpan = {
             
             </select>
                 </form>
+                <div style={subHead}>Data updates daily at 4:00 p.m. EST.</div>
                 </div>
         
                 <div>
