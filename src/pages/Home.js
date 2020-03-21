@@ -27,8 +27,7 @@ const styleSmall = {
     marginRight: '2rem', 
     marginLeft: '2rem', 
     paddingLeft: '0rem', 
-    paddingRight: '0rem', 
-    textAlign: 'left'
+    paddingRight: '0rem'
 }
 
     return(
