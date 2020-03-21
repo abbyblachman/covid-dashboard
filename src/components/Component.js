@@ -91,7 +91,7 @@ const subHead = {
 
 const formLarge = {
     paddingBottom: '1.5rem', 
-    textAlign: 'center', 
+    textAlign: 'left', 
     fontFamily: 'Bree Serif'
 }
 
@@ -100,7 +100,7 @@ const formSpanLarge = {
 }
 
 const titleSpanLarge = {
-    textAlign: 'center', 
+    textAlign: 'left', 
     fontSize: '2rem', 
     fontFamily: 'Bree Serif', 
     marginBottom: '1rem'
