@@ -13,7 +13,7 @@ const arr = [];
 
 let now = moment().format('YYYYMMDD');
 let startdate = moment().subtract(1, "days").format("YYYYMMDD");
-console.log(startdate)
+// console.log(startdate)
 
 useEffect(() => {
     getData();
@@ -87,7 +87,7 @@ const span = {
 
 return(
     <div style={style}>
-        {console.log(stateOne)}
+        {/* {console.log(stateOne)} */}
         <div style={span}>States with the most positive tests so far:</div>
 <div><strong>{stateOne.state}</strong>: {stateOne.positive} cases. {stateOne.total} tests administered.</div>
         <div><strong>{stateTwo.state}</strong>: {stateTwo.positive} cases. {stateTwo.total} tests administered.</div>

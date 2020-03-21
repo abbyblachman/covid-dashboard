@@ -3,6 +3,7 @@ import Axios from 'axios';
 // import Totals from '../components/Totals';
 import { relativeTimeRounding } from 'moment';
 import MediaQuery from 'react-responsive'
+import USA from '../components/USA'
 
 
 
@@ -14,11 +15,24 @@ const [state, setState] = useState();
 const [stateYesterday, setStateYesterday] = useState(0);
 const [total, setTotal] = useState(0);
 const [totalYesterday, setTotalYesterday] = useState(0);
+const [usaPostive, setUSAPositive] = useState(0);
+const [usaTotal, setUSATotal] = useState(0);
 
 
-// useEffect(() => {
-//     getData();
-// }, )
+function USA () {
+    Axios
+        .get(`https://covidtracking.com/api/us`)
+        .then(res => {
+            setUSAPositive(res.data[0].positive)
+            setUSATotal(res.data[0].total)
+        })
+}
+        
+
+
+useEffect(() => {
+    USA();
+},[] )
 
 // setNumbers();
 
@@ -118,6 +132,7 @@ const subHeadLarge = {
             <div style={styleDiv}>
             <div style={form}>
             <strong><div style={titleSpan}>COVID-19 BY STATE</div></strong>
+            <USA/>
             <form className="form" action="#">
             <span style={formSpan}>Choose your state: </span>
             <select value={state} id="state" name="state" onChange={getData}>
@@ -177,7 +192,8 @@ const subHeadLarge = {
                 </form>
                 <div style={subHead}>Data updates daily at 4:00 p.m. EST.</div>
                 </div>
-        
+
+                <div>{usaPostive} people have tested positive for COVID-19 in the United States. {usaTotal} have been tested.</div>
                 <div>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state. </div>
@@ -250,7 +266,9 @@ const subHeadLarge = {
                 <div style={subHeadLarge}>Data updates daily at 4:00 p.m. EST.</div>
                 </div>
         
+                <div><strong>{usaPostive}</strong> people have tested positive for COVID-19 in the United States. {usaTotal} have been tested.</div>
                 <div>
+                    <br></br>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state. </div>
                 <div><strong>{total} </strong>people have been tested in this state so far. That's {total - totalYesterday} more people than yesterday.</div>
