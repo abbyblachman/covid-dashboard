@@ -7,8 +7,10 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "chart.js": "^2.9.3",
     "moment": "^2.24.0",
     "react": "^16.13.0",
+    "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.0",
     "react-moment": "^0.9.7",
     "react-responsive": "^8.0.3",
@@ -17,7 +19,7 @@
     "tailwindcss": "^1.2.0"
   },
   "engines": {
-    "node": "13.10.1", 
+    "node": "13.10.1",
     "npm": "6.13.7"
   },
   "scripts": {

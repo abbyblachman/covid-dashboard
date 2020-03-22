@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import Axios from 'axios';
 // import Totals from '../components/Totals';
 import { relativeTimeRounding } from 'moment';
 import MediaQuery from 'react-responsive'
+
 
 
 
@@ -34,10 +36,14 @@ useEffect(() => {
 },[] )
 
 // setNumbers();
+function onClick (event) {
+    getData(event);
+    
+}
 
 function getData(event) {
     let state = event.target.value;
-    event.preventDefault();
+    setState(state)
     Axios
     .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`)
     .then(res => 
@@ -102,6 +108,18 @@ const subHead = {
     marginTop: '0.5rem'
 }
 
+const button = {
+    display: 'inline block', 
+    marginTop: '0.5rem', 
+    border: '1px solid',
+    borderRadius: '5%',
+    backgroundColor: '#f7cf7e'
+}
+
+const buttonParent = {
+    textAlign: 'center'
+}
+
 const formLarge = {
     paddingBottom: '1.5rem', 
     textAlign: 'left', 
@@ -125,6 +143,7 @@ const subHeadLarge = {
 }
 
 
+
         return (
             <>
             <MediaQuery maxDeviceWidth={1223} device={{ deviceWidth: 1599 }}>
@@ -134,7 +153,7 @@ const subHeadLarge = {
             <USA/>
             <form className="form" action="#">
             <span style={formSpan}>Choose your state: </span>
-            <select value={state} id="state" name="state" onChange={getData}>
+            <select value={state} id="state" name="state" onChange={onClick}>
             <option value="Choose">State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
@@ -194,9 +213,9 @@ const subHeadLarge = {
 
                 <div>{usaPostive} people have tested positive for COVID-19 in the United States. {usaTotal} have been tested.</div>
                 <div>
-               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state. That's {iLPositive - stateYesterday} more than yesterday.</div>
-               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state. </div>
-                <div><strong>{total} </strong>people have been tested in this stateso far. That's {total - totalYesterday} more people than yesterday.</div>
+               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
+               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
+                <div><strong>{total} </strong>people have been tested in {state} so far. That's {total - totalYesterday} more people than yesterday.</div>
 
                </div>
             {/* <Totals data={data}></Totals> */}
@@ -208,7 +227,7 @@ const subHeadLarge = {
             <strong><div style={titleSpanLarge}>COVID-19 BY STATE</div></strong>
             <form className="form" action="#">
             <span style={formSpanLarge}>Choose your state: </span>
-            <select value={state} id="state" name="state" onChange={getData}>
+            <select value={state} id="state" name="state" onChange={onClick}>
             <option value="Choose">State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
@@ -271,7 +290,9 @@ const subHeadLarge = {
                     <br></br>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state. </div>
-                <div><strong>{total} </strong>people have been tested in this state far. That's {total - totalYesterday} more people than yesterday.</div>
+                <div><strong>{total} </strong>people have been tested in this state so far. That's {total - totalYesterday} more people than yesterday.</div>
+                <div style={buttonParent}><Link to={`/${state}`}><button style={button}>{state}: see more</button></Link></div>
+                
                </div>
             {/* <Totals data={data}></Totals> */}
             </div>
