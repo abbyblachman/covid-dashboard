@@ -49,8 +49,7 @@ export default class App extends React.Component {
               fontSize:20
             },
             legend:{
-              display:true,
-              position:'right'
+              display: false,
             }
           }}
         />

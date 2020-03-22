@@ -71,9 +71,12 @@ function onClick(event) {
     }
 
     const styleLine = {
-        width: '30rem', 
-        height: '16rem', 
-    }
+        maxWidth: '100%', 
+        maxHeight: '100%',
+        position: 'relative'
+      }
+    
+      
     const style = {
         paddingBottom: '5rem', 
         marginLeft: 'auto', 
@@ -92,9 +95,34 @@ function onClick(event) {
         borderRadius: '5%',
         backgroundColor: '#f7cf7e'
     }
+
+    const totalSpan = {
+        display: 'inline block', 
+        marginTop: '1rem', 
+        padding: '0.2rem',
+        border: '1px solid',
+        borderRadius: '5%',
+        color: 'white',
+        backgroundColor: '#FFAA00'
+    }
+
+    const positiveSpan = {
+        display: 'inline block', 
+        margin: '1rem', 
+        padding: '0.2rem',
+        border: '1px solid',
+        borderRadius: '5%',
+        color: 'black',
+        backgroundColor: '#FFAA00'
+    }
     
     const buttonParent = {
         textAlign: 'center'
+    }
+
+    const spanParent = {
+        textAlign: 'center', 
+        marginTop: '1rem'
     }
 
     const titleSpan = {
@@ -178,9 +206,12 @@ function onClick(event) {
             </select>
                 </form>
         <div style={buttonParent}><Link to={`/`}><button style={button}>Home</button></Link></div>
+        <div>
         <div style={styleLine}>
         <LineChart tests={tests} positive={positive} date={date}></LineChart>
         </div>
+        </div>
+        <div style={spanParent}><span style={totalSpan}><strong>Total tests</strong></span><span style={positiveSpan}><strong>Positive tests</strong></span></div>
         <div style={text}>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
