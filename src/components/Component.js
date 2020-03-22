@@ -3,7 +3,6 @@ import Axios from 'axios';
 // import Totals from '../components/Totals';
 import { relativeTimeRounding } from 'moment';
 import MediaQuery from 'react-responsive'
-import USA from '../components/USA'
 
 
 
