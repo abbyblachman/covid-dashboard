@@ -140,7 +140,8 @@ function onClick(event) {
         marginTop: '1rem'
     }
     const formSpanLarge = {
-        fontSize: '1.5rem'
+        fontSize: '1.5rem', 
+        fontFamily: 'Bree Serif'
     }
 
 
