@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom'
 import moment from 'moment';
 import axios from 'axios';
 
@@ -83,17 +84,22 @@ const span = {
     fontFamily: 'Bree Serif'
 }
 
+const a = {
+    textDecorationg: 'underline', 
+    color: 'black'
+}
+
 
 
 return(
     <div style={style}>
         {/* {console.log(stateOne)} */}
         <div style={span}>States with the most positive tests so far:</div>
-<div><strong>{stateOne.state}</strong>: {stateOne.positive} cases. {stateOne.total} tests administered.</div>
-        <div><strong>{stateTwo.state}</strong>: {stateTwo.positive} cases. {stateTwo.total} tests administered.</div>
-        <div><strong>{stateThree.state}</strong>: {stateThree.positive} cases. {stateThree.total} tests administered.</div>
-        <div><strong>{stateFour.state}</strong>: {stateFour.positive} cases. {stateFour.total} tests administered.</div>
-        <div><strong>{stateFive.state}</strong>: {stateFive.positive} cases. {stateFive.total} tests administered.</div>
+        <div><Link to={`/${stateOne.state}`}><strong style={a}>{stateOne.state}</strong></Link>: {stateOne.positive} cases. {stateOne.total} tests administered.</div>
+        <div><Link to={`/${stateTwo.state}`}><strong style={a}>{stateTwo.state}</strong></Link>: {stateTwo.positive} cases. {stateTwo.total} tests administered.</div>
+        <div><Link to={`/${stateThree.state}`}><strong style={a}>{stateThree.state}</strong></Link>: {stateThree.positive} cases. {stateThree.total} tests administered.</div>
+        <div><Link to={`/${stateFour.state}`}><strong style={a}>{stateFour.state}</strong></Link>: {stateFour.positive} cases. {stateFour.total} tests administered.</div>
+        <div><Link to={`/${stateFive.state}`}><strong style={a}>{stateFive.state}</strong></Link>: {stateFive.positive} cases. {stateFive.total} tests administered.</div>
     </div>
     )
 }

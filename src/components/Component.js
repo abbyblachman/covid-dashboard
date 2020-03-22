@@ -216,6 +216,7 @@ const subHeadLarge = {
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
                 <div><strong>{total} </strong>people have been tested in {state} so far. That's {total - totalYesterday} more people than yesterday.</div>
+                <div style={buttonParent}><Link to={`/${state}`}><button style={button}>{state}: see more</button></Link></div>
 
                </div>
             {/* <Totals data={data}></Totals> */}
