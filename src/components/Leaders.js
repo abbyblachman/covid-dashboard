@@ -9,6 +9,11 @@ const [stateTwo, setStateTwo] = useState([]);
 const [stateThree, setStateThree] = useState([]);
 const [stateFour, setStateFour] = useState([]);
 const [stateFive, setStateFive] = useState([]);
+const [stateSix, setStateSix] = useState([]);
+const [stateSeven, setStateSeven] = useState([]);
+const [stateEight, setStateEight] = useState([]);
+const [stateNine, setStateNine] = useState([]);
+const [stateTen, setStateTen] = useState([]);
 const arr = [];
 
 let now = moment().format('YYYYMMDD');
@@ -54,6 +59,11 @@ axios
                 setStateThree(arr[2])
                 setStateFour(arr[3])
                 setStateFive(arr[4])
+                setStateSix(arr[5])
+                setStateSeven(arr[6])
+                setStateEight(arr[7])
+                setStateNine(arr[8])
+                setStateTen(arr[10])
             })
            
         }
@@ -94,6 +104,11 @@ return(
         <div><strong>{stateThree.state}</strong>: {stateThree.positive} cases. {stateThree.total} tests administered.</div>
         <div><strong>{stateFour.state}</strong>: {stateFour.positive} cases. {stateFour.total} tests administered.</div>
         <div><strong>{stateFive.state}</strong>: {stateFive.positive} cases. {stateFive.total} tests administered.</div>
+        <div><strong>{stateSix.state}</strong>: {stateSix.positive} cases. {stateSix.total} tests administered.</div>
+        <div><strong>{stateSeven.state}</strong>: {stateSeven.positive} cases. {stateSeven.total} tests administered.</div>
+        <div><strong>{stateEight.state}</strong>: {stateEight.positive} cases. {stateEight.total} tests administered.</div>
+        <div><strong>{stateNine.state}</strong>: {stateNine.positive} cases. {stateNine.total} tests administered.</div>
+        <div><strong>{stateTen.state}</strong>: {stateTen.positive} cases. {stateTen.total} tests administered.</div>
     </div>
     )
 }
