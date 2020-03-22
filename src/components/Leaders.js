@@ -28,7 +28,7 @@ useEffect(() => {
 
 function getData() {
 axios
-.get(`https://covidtracking.com/api/states/daily?date=${now}`)
+.get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${now}`)
 .then(res => {
     res.data.forEach(data => {
         arr.push({
@@ -42,7 +42,7 @@ axios
     .then(() => {
         if (arr.length === 0) {  
             axios
-            .get(`https://covidtracking.com/api/states/daily?date=${startdate}`)
+            .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${startdate}`)
             .then(res => {
                 res.data.forEach(data => {
                     arr.push({

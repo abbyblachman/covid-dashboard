@@ -20,7 +20,7 @@ const [usaTotal, setUSATotal] = useState(0);
 
 function USA () {
     Axios
-        .get(`https://covidtracking.com/api/us`)
+        .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/us`)
         .then(res => {
             setUSAPositive(res.data[0].positive)
             setUSATotal(res.data[0].total)
@@ -39,7 +39,7 @@ function getData(event) {
     let state = event.target.value;
     event.preventDefault();
     Axios
-    .get(`https://covidtracking.com/api/states/daily?state=${state}`)
+    .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`)
     .then(res => 
         {
             // console.log(res.data)
@@ -58,7 +58,7 @@ function getData(event) {
         })
     // .then(() => {
     //         Axios
-    //         .get(`https://covidtracking.com/api/states/daily?state=${state}`) 
+    //         .get(`https://covidtracking.com/api/states/daily?state= this state`) 
     //         .then(res => {
     //             setStateToday(res.data[0])
     //             console.log(stateToday)
@@ -196,7 +196,8 @@ const subHeadLarge = {
                 <div>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state. </div>
-                <div><strong>{total} </strong>people have been tested in this state so far. That's {total - totalYesterday} more people than yesterday.</div>
+                <div><strong>{total} </strong>people have been tested in this stateso far. That's {total - totalYesterday} more people than yesterday.</div>
+
                </div>
             {/* <Totals data={data}></Totals> */}
             </div>
@@ -270,7 +271,7 @@ const subHeadLarge = {
                     <br></br>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in this state. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in this state. </div>
-                <div><strong>{total} </strong>people have been tested in this state so far. That's {total - totalYesterday} more people than yesterday.</div>
+                <div><strong>{total} </strong>people have been tested in this state far. That's {total - totalYesterday} more people than yesterday.</div>
                </div>
             {/* <Totals data={data}></Totals> */}
             </div>
