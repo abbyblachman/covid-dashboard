@@ -150,6 +150,7 @@ function onClick(event) {
 
     return(
         <div style={style}>
+        <div style={buttonParent}><Link to={`/`}><button style={button}>Home</button></Link></div>
         <div style={titleSpan}>COVID-19 in {state}</div>
         <div style={subHead}>Data updates daily at 4:00 p.m. EST.</div>
         <br></br>
@@ -211,7 +212,6 @@ function onClick(event) {
             
             </select>
                 </form>
-        <div style={buttonParent}><Link to={`/`}><button style={button}>Home</button></Link></div>
         <div>
         <div style={styleLine}>
         <LineChart tests={tests} positive={positive} date={date}></LineChart>
