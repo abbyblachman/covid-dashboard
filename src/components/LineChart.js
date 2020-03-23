@@ -6,12 +6,15 @@ import {Line} from 'react-chartjs-2';
 export default class App extends React.Component {
   render() {
 
-    const tests = this.props.tests;
+    const testLength = this.props.tests.length;
+    const tests = (this.props.tests).slice(testLength - 8, testLength);
     // console.log(tests)
-    const positive = this.props.positive;
+    const positiveLength = this.props.positive.length;
+    const positive = (this.props.positive).slice(positiveLength - 8, positiveLength);
     // console.log(positive)
-    const date = this.props.date;
-    console.log(date)
+    const dateLength = this.props.date.length;
+    const date = (this.props.date).slice(dateLength - 8, dateLength);
+    // console.log(date)
 
     const state = {
         labels: date,

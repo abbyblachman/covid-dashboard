@@ -3,6 +3,7 @@ import Axios from 'axios';
 import LineChart from '../components/LineChart';
 import {Link} from 'react-router-dom'
 import MediaQuery from 'react-responsive'
+import moment from 'moment'
 
 function State() {
     const [state, setState] = useState(window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
@@ -62,7 +63,8 @@ function onClick(event) {
                     setPositive(positive => [...positive, data.positive])
                 })
                 res.data.forEach(data => {
-                    setDate(date => [...date, data.date])
+                    let newDate = moment(`${data.date}`).format('MMMM Do')
+                    setDate(date => [...date, newDate])
                 })
                 
             }
