@@ -114,8 +114,8 @@ function onClick(event) {
         padding: '0.2rem',
         border: '1px solid',
         borderRadius: '5%',
-        color: 'black',
-        backgroundColor: '#FFAA00'
+        color: 'white',
+        backgroundColor: 'black'
     }
     
     const buttonParent = {
@@ -135,7 +135,8 @@ function onClick(event) {
 
     const subHead = {
         fontFamily: 'Helvetica', 
-        marginTop: '0.5rem'
+        marginTop: '0.5rem', 
+        fontSize: '0.8rem'
     }
 
     const text = {
@@ -151,6 +152,7 @@ function onClick(event) {
         <div style={style}>
         <div style={titleSpan}>COVID-19 in {state}</div>
         <div style={subHead}>Data updates daily at 4:00 p.m. EST.</div>
+        <br></br>
         <form className="form" action="#">
             <span style={formSpanLarge}>Choose your state: </span>
             <select value={state} id="state" name="state" onChange={onClick}>

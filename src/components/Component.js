@@ -108,6 +108,12 @@ const subHead = {
     marginTop: '0.5rem'
 }
 
+const subHeadSmall = {
+    fontFamily: 'Helvetica', 
+    marginTop: '0.5rem', 
+    fontFamily: '0.8rem'
+}
+
 const button = {
     display: 'inline block', 
     marginTop: '0.5rem', 
@@ -142,6 +148,12 @@ const subHeadLarge = {
     marginTop: '0.5rem'
 }
 
+const subHeadLargeSmall = {
+    fontSize: '0.8rem', 
+    fontFamily: "Helvetica", 
+    marginBottom: '1rem'
+}
+
 
 
         return (
@@ -150,6 +162,9 @@ const subHeadLarge = {
             <div style={styleDiv}>
             <div style={form}>
             <strong><div style={titleSpan}>COVID-19 BY STATE</div></strong>
+            <div style={subHeadSmall}>Data updates daily at 4:00 p.m. EST.</div>
+            <div style={subHead}>{usaPostive} people have tested positive for COVID-19 in the United States. {usaTotal} have been tested.</div>
+            <br></br>
             <USA/>
             <form className="form" action="#">
             <span style={formSpan}>Choose your state: </span>
@@ -209,10 +224,8 @@ const subHeadLarge = {
             
             </select>
                 </form>
-                <div style={subHead}>Data updates daily at 4:00 p.m. EST.</div>
+                
                 </div>
-
-                <div>{usaPostive} people have tested positive for COVID-19 in the United States. {usaTotal} have been tested.</div>
                 <div>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
@@ -227,6 +240,9 @@ const subHeadLarge = {
                 <div style={styleDiv}>
             <div style={formLarge}>
             <strong><div style={titleSpanLarge}>COVID-19 BY STATE</div></strong>
+            <div style={subHeadLargeSmall}>Data updates daily at 4:00 p.m. EST.</div>
+            <div style={subHeadLarge}><strong>{usaPostive}</strong> people have tested positive for COVID-19 in the United States. {usaTotal} have been tested.</div>
+            <br></br>
             <form className="form" action="#">
             <span style={formSpanLarge}>Choose your state: </span>
             <select value={state} id="state" name="state" onChange={onClick}>
@@ -285,12 +301,10 @@ const subHeadLarge = {
             
             </select>
                 </form>
-                <div style={subHeadLarge}>Data updates daily at 4:00 p.m. EST.</div>
                 </div>
-        
-                <div><strong>{usaPostive}</strong> people have tested positive for COVID-19 in the United States. {usaTotal} have been tested.</div>
+                
+                
                 <div>
-                    <br></br>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
                 <div><strong>{total} </strong>people have been tested in {state}so far. That's {total - totalYesterday} more people than yesterday.</div>

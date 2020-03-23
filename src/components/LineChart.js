@@ -23,8 +23,8 @@ export default class App extends React.Component {
               label: 'Total tests',
               fill: false,
               lineTension: 0.5,
-              backgroundColor: 'rgba(255,255,255,1)',
-              borderColor: 'rgba(255,255,255,1)',
+              backgroundColor: 'rgba(251,147,49,1)',
+              borderColor: 'rgba(251,147,49,1)',
               borderWidth: 2,
               data: tests
           }, 
