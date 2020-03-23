@@ -21,8 +21,8 @@ useEffect(() => {
     if (state) {
         getData();
     }
-    else {
-        window.location.href = '/'
+    if (state === 'undefined') {
+        setState('')
     }
     
 }, [])
