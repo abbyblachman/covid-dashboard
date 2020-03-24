@@ -18,7 +18,7 @@ function HtmlTooltipComp(props) {
     <HtmlTooltip
       title={
         <React.Fragment>
-          <Typography color="inherit">Alaska</Typography>
+          <Typography color="inherit">{props.name}</Typography>
           <b>Total Tested: </b> {props.totalTested}
           <br />
           <b>Positive Results: </b> {props.totalPositive}
