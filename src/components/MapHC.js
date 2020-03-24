@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import HTMLTooltip from '../components/HtmlTooltip';
+import { AllStatesDataContext } from '../utils/AllStatesDataContext';
 
 function MapComp() {
+  //styling
   const elStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -12,8 +14,19 @@ function MapComp() {
     fill: '#D3D3D3'
   };
 
+  const [AllStatesData, setAllStatesData] = useContext(AllStatesDataContext);
+  const [totalTested, setTotalTested] = useState('');
+  const [totalPositive, setTotalPositive] = useState('');
+
   function hoverFill(e) {
     e.target.style.fill = 'black';
+    console.log(e.target.id);
+    AllStatesData.forEach(stateData => {
+      if (stateData.state === e.target.id) {
+        setTotalTested(stateData.total);
+        setTotalPositive(stateData.positive);
+      }
+    });
   }
 
   function revertFill(e) {
@@ -22,13 +35,18 @@ function MapComp() {
 
   return (
     <>
+      {console.log('total pos', totalPositive)}
+      {console.log('total tested', totalTested)}
       <div style={elStyle}>
         <svg xmlns="http://www.w3.org/2000/svg" width="959" height="593">
           <defs>
             <style type="text/css"></style>
           </defs>
           <g style={stateStyle}>
-            <HTMLTooltip>
+            <HTMLTooltip
+              totalTested={totalTested}
+              totalPositive={totalPositive}
+            >
               <path
                 id="AK"
                 onMouseEnter={hoverFill}
