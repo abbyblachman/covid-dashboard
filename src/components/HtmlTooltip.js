@@ -3,7 +3,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-function HtmlTooltipComp(props, { total }) {
+function HtmlTooltipComp(props) {
   const HtmlTooltip = withStyles(theme => ({
     tooltip: {
       backgroundColor: '#f5f5f9',
@@ -19,10 +19,9 @@ function HtmlTooltipComp(props, { total }) {
       title={
         <React.Fragment>
           <Typography color="inherit">Alaska</Typography>
-          <b>Total Tested: </b> {total}
+          <b>Total Tested: </b> {props.totalTested}
           <br />
-          <b>Positive Results: </b>
-          1oo
+          <b>Positive Results: </b> {props.totalPositive}
         </React.Fragment>
       }
     >
