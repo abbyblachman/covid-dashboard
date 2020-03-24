@@ -169,6 +169,7 @@ function onClick(event) {
             <option value="DC">District of Columbia</option>
             <option value="FL">Florida</option>
             <option value="GA">Georgia</option>
+            <option value="GU">Guam</option>
             <option value="HI">Hawaii</option>
             <option value="ID">Idaho</option>
             <option value="IL">Illinois</option>
@@ -197,6 +198,7 @@ function onClick(event) {
             <option value="OK">Oklahoma</option>
             <option value="OR">Oregon</option>
             <option value="PA">Pennsylvania</option>
+            <option value="PR">Puerto Rico</option>
             <option value="RI">Rhode Island</option>
             <option value="SC">South Carolina</option>
             <option value="SD">South Dakota</option>

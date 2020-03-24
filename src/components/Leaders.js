@@ -89,7 +89,12 @@ const a = {
     color: 'black'
 }
 
-
+const subHeadSmall = {
+    fontFamily: 'Helvetica', 
+    marginTop: '2rem', 
+    fontSize: '0.5rem',
+    padding: '1.5rem'
+}
 
 return(
     <div style={style}>
@@ -100,6 +105,7 @@ return(
         <div><Link to={`/${stateThree.state}`}><strong style={a}>{stateThree.state}</strong></Link>: {stateThree.positive} cases. {stateThree.total} tests administered.</div>
         <div><Link to={`/${stateFour.state}`}><strong style={a}>{stateFour.state}</strong></Link>: {stateFour.positive} cases. {stateFour.total} tests administered.</div>
         <div><Link to={`/${stateFive.state}`}><strong style={a}>{stateFive.state}</strong></Link>: {stateFive.positive} cases. {stateFive.total} tests administered.</div>
+        <div style={subHeadSmall}>Built w/ ❤️ by Abby Blachman. View the <a href="https://github.com/abbyblachman/covid-dashboard">source code</a> on GitHub.</div>
     </div>
     )
 }
