@@ -40,6 +40,10 @@ axios
             axios
             .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${startdate}`)
             .then(res => {
+                if (res.data.length === 0) {
+                    alert('The API is reloading data at this time. Please reload the page.')
+                }
+                else if (res.data.length !== 0) {
                 res.data.forEach(data => {
                     arr.push({
                         state: data.state,
@@ -48,6 +52,7 @@ axios
                 })
                 arr.sort(function(a, b){ return b.positive - a.positive});
                 setPositive(arr);
+            }
             })
             .then(() => {
                 setStateOne(arr[0])

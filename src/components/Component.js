@@ -51,7 +51,7 @@ function getData(event) {
     .then(res => 
         {
             // console.log(res.data)
-        if (res.data !== null) {
+        if (res.data.length !== 0) {
             // console.log(res.data)
         setData(res.data);
         setILPositive(res.data[0].positive);
@@ -61,7 +61,12 @@ function getData(event) {
         setTotalYesterday(res.data[1].total)
         }
         else {
-            alert('No data available at this time')
+            setData('');
+            setILPositive('');
+            setILNegative('')
+            setStateYesterday('')
+            setTotal('')
+            setTotalYesterday('')
         }
         
         })
