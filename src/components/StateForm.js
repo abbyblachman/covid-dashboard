@@ -1,101 +1,29 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import Axios from 'axios';
-// import Totals from '../components/Totals';
-import { relativeTimeRounding } from 'moment';
 import MediaQuery from 'react-responsive';
 import { USADataContext } from '../utils/USAData';
 import { StateDataContext } from '../utils/StateData';
+import { StateNameContext } from '../utils/StateName';
 
-function Component() {
-  //   const [data, setData] = useState(false);
-  //   const [iLPositive, setILPositive] = useState(0);
-  //   const [ilNegative, setILNegative] = useState(0);
-  const [state, setState] = useState();
-  const [stateYesterday, setStateYesterday] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [totalYesterday, setTotalYesterday] = useState(0);
-  const [usaPostive, setUSAPositive] = useState(0);
-  const [usaTotal, setUSATotal] = useState(0);
-  const [date, setDate] = useState();
-  const [pending, setPending] = useState('NaN');
-
+function StateForm() {
+  const [stateName, setStateName] = useContext(StateNameContext);
   const [USAData, setUSAData] = useContext(USADataContext);
   const [stateData, setStateData] = useContext(StateDataContext);
-
-  function USA() {
-    Axios.get(
-      `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/us`
-    ).then(res => {
-      // console.log(res.data)
-      setUSAPositive(res.data[0].positive);
-      setUSATotal(res.data[0].total);
-    });
-  }
-
-  useEffect(() => {
-    // getData('NY');
-    // USA();
-  }, []);
 
   // setNumbers();
   function onClick(event) {
     let state = event.target.value;
+    console.log("i'm the state", state);
     getData(state);
   }
   function getData(state) {
-    setState(state);
+    setStateName(state);
     Axios.get(
       `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`
     ).then(res => setStateData(res.data));
-
-    //   function getData(state) {
-    //     setState(state);
-    //     Axios.get(
-    //       `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`
-    //     ).then(res => {
-    //       if (res.data.length !== 0) {
-    //         // console.log(res.data)
-    //         setData(res.data);
-    //         if (res.data[0].pending) {
-    //           setPending(res.data[0].pending);
-    //         }
-    //         setILPositive(res.data[0].positive);
-    //         setILNegative(res.data[0].negative);
-    //         setStateYesterday(res.data[1].positive);
-    //         setTotal(res.data[0].total);
-    //         setTotalYesterday(res.data[1].total);
-    //       } else {
-    //         setData('');
-    //         setILPositive('');
-    //         setILNegative('');
-    //         setStateYesterday('');
-    //         setTotal('');
-    //         setTotalYesterday('');
-    //       }
-    //     });
-    // .then(() => {
-    //         Axios
-    //         .get(`https://covidtracking.com/api/states/daily?state= this state`)
-    //         .then(res => {
-    //             setStateToday(res.data[0])
-    //             console.log(stateToday)
-    //             // const today = res.data[0].positive
-    //             // console.log(today)
-    //         })
-
-    // })
   }
 
-  const styleDiv = {
-    // marginLeft: 'auto',
-    // marginRight: 'auto',
-    // marginTop: '8rem',
-    // width: '40rem',
-    // fontSize: '1rem',
-    // paddingLeft: '10rem',
-    // paddingRight: '10rem'
-  };
+  const styleDiv = {};
 
   const form = {
     paddingBottom: '1.5rem',
@@ -122,19 +50,7 @@ function Component() {
   const subHeadSmall = {
     fontFamily: 'Helvetica',
     marginTop: '0.5rem',
-    fontFamily: '0.8rem'
-  };
-
-  const button = {
-    display: 'inline block',
-    marginTop: '0.5rem',
-    border: '1px solid',
-    borderRadius: '5%',
-    backgroundColor: '#f7cf7e'
-  };
-
-  const buttonParent = {
-    textAlign: 'center'
+    fontSize: '0.8rem'
   };
 
   const formLarge = {
@@ -167,7 +83,6 @@ function Component() {
 
   return (
     <>
-      {USAData ? console.log('this is data state', USAData[0].positive) : null}
       <MediaQuery maxDeviceWidth={1223} device={{ deviceWidth: 1599 }}>
         <div style={styleDiv}>
           <div style={form}>
@@ -181,10 +96,9 @@ function Component() {
               {USAData ? USAData[0].total : ''} have been tested.
             </div>
             <br></br>
-            {/* <USA /> */}
             <form className="form" action="#">
               <span style={formSpan}>Choose your state: </span>
-              <select value={state} id="state" name="state" onChange={onClick}>
+              <select id="state" name="state" onChange={onClick}>
                 <option value="Choose">State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -242,37 +156,7 @@ function Component() {
               </select>
             </form>
           </div>
-          {/* <div>
-            <div>
-              <strong>{iLPositive}</strong> people have tested positive for
-              COVID-19 in {state}. That's{' '}
-              {Math.floor((iLPositive / total) * 100)}% of those who have been
-              tested in the state.
-            </div>
-            <div>
-              <strong>{ilNegative}</strong> people have tested negative for
-              COVID-19 in {state}. That's{' '}
-              {Math.floor((ilNegative / total) * 100)}% of those who have been
-              tested in the state.{' '}
-            </div>
-            <div>
-              <strong>{total} </strong>people have been tested in {state} so
-              far. {pending} tests are currently pending results.
-            </div>
-            <br></br>
-            <div>
-              <strong>{state}</strong> has{' '}
-              {Math.floor((iLPositive / usaPostive) * 100)} of all positive
-              cases across the United States.
-            </div>
-            <div style={buttonParent}>
-              <Link to={`/${state}`}>
-                <button style={button}>{state}: see more</button>
-              </Link>
-            </div>
-          </div>
-          {/* <Totals data={data}></Totals> */}
-        </div>{' '}
+        </div>
       </MediaQuery>
       <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
         <div style={styleDiv}>
@@ -291,7 +175,7 @@ function Component() {
             <br></br>
             <form className="form" action="#">
               <span style={formSpanLarge}>Choose your state: </span>
-              <select value={state} id="state" name="state" onChange={onClick}>
+              <select id="state" name="state" onChange={onClick}>
                 <option value="Choose">State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -349,41 +233,10 @@ function Component() {
               </select>
             </form>
           </div>
-
-          {/* <div>
-            <div>
-              <strong>{iLPositive}</strong> people have tested positive for
-              COVID-19 in {state}. That's{' '}
-              {Math.floor((iLPositive / total) * 100)}% of those who have been
-              tested in the state.
-            </div>
-            <div>
-              <strong>{ilNegative}</strong> people have tested negative for
-              COVID-19 in {state}. That's{' '}
-              {Math.floor((ilNegative / total) * 100)}% of those who have been
-              tested in the state.{' '}
-            </div>
-            <div>
-              <strong>{total} </strong>people have been tested in {state} so
-              far. {pending} tests are currently pending results.
-            </div>
-            <br></br>
-            <div>
-              <strong>{state}</strong> has around{' '}
-              {Math.floor((iLPositive / usaPostive) * 100)}% of all positive
-              cases across the United States.
-            </div>
-            <div style={buttonParent}>
-              <Link to={`/${state}`}>
-                <button style={button}>{state}: see more</button>
-              </Link>
-            </div>
-          </div>
-          {/* <Totals data={data}></Totals> */}
-        </div>{' '}
+        </div>
       </MediaQuery>
     </>
   );
 }
 
-export default Component;
+export default StateForm;
