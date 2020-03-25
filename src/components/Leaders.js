@@ -110,8 +110,7 @@ const a = {
 const subHeadSmall = {
     fontFamily: 'Helvetica', 
     marginTop: '2rem', 
-    fontSize: '0.5rem',
-    padding: '1.5rem'
+    fontSize: '0.5rem'
 }
 
 return(
