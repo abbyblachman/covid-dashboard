@@ -15,11 +15,24 @@ function State() {
     const [stateYesterday, setStateYesterday] = useState(0);
     const [total, setTotal] = useState(0);
     const [totalYesterday, setTotalYesterday] = useState(0);
+    const [usaPostive, setUSAPositive] = useState(0);
+    const [usaTotal, setUSATotal] = useState(0);
+
+function USA () {
+    Axios
+        .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/us`)
+        .then(res => {
+            // console.log(res.data)
+            setUSAPositive(res.data[0].positive)
+            setUSATotal(res.data[0].total)
+        })
+}
 
 
 useEffect(() => {
     if (state) {
         getData();
+        USA();
     }
     if (state === 'undefined') {
         setState('')
@@ -221,9 +234,10 @@ function onClick(event) {
         </div>
         <div style={spanParent}><span style={totalSpan}><strong>Total tests</strong></span><span style={positiveSpan}><strong>Positive tests</strong></span></div>
         <div style={text}>
-               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
-               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
-                <div><strong>{total} </strong>people have been tested in {state} so far. That's {total - totalYesterday} more people than yesterday.</div>
+               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {Math.floor((iLPositive/total)*100)}% of those who have been tested in the state.</div>
+               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. That's {Math.floor((ilNegative/total)*100)}% of those who have been tested in the state.</div>
+                <div><strong>{total} </strong>people have been tested in {state} so far.</div>
+                <div>{state} has around {Math.floor((iLPositive/usaPostive)*100)}% of all positive cases across the United States.</div>
 
                </div>
         </div>

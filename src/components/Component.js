@@ -237,9 +237,10 @@ const subHeadLargeSmall = {
                 
                 </div>
                 <div>
-               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
-               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
-                <div><strong>{total} </strong>people have been tested in {state} so far. That's {total - totalYesterday} more people than yesterday.</div>
+        <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {Math.floor((iLPositive/total)*100)}% of those who have been tested in the state.</div>
+               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. That's {Math.floor((ilNegative/total*100))}% of those who have been tested in the state.  </div>
+                <div><strong>{total} </strong>people have been tested in {state} so far.</div>
+                <div>{state} has {Math.floor((iLPositive/usaPostive)*100)} of all positive cases across the United States.</div>
                 <div style={buttonParent}><Link to={`/${state}`}><button style={button}>{state}: see more</button></Link></div>
 
                </div>
@@ -317,9 +318,10 @@ const subHeadLargeSmall = {
                 
                 
                 <div>
-               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
-               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
-                <div><strong>{total} </strong>people have been tested in {state} so far. That's {total - totalYesterday} more people than yesterday.</div>
+               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {Math.floor((iLPositive/total)*100)}% of those who have been tested in the state.</div>
+               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. That's {Math.floor((ilNegative/total*100))}% of those who have been tested in the state. </div>
+                <div><strong>{total} </strong>people have been tested in {state} so far.</div>
+                <div>{state} has around {Math.floor((iLPositive/usaPostive)*100)}% of all positive cases across the United States.</div>
                 <div style={buttonParent}><Link to={`/${state}`}><button style={button}>{state}: see more</button></Link></div>
                 
                </div>
