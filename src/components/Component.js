@@ -19,7 +19,7 @@ const [totalYesterday, setTotalYesterday] = useState(0);
 const [usaPostive, setUSAPositive] = useState(0);
 const [usaTotal, setUSATotal] = useState(0);
 const [date, setDate] = useState();
-const [pending, setPending] = useState('[Data unavailable]');
+const [pending, setPending] = useState('NaN');
 
 
 function USA () {
