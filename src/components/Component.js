@@ -35,6 +35,7 @@ function USA () {
 
 
 useEffect(() => {
+    newYork();
     USA();
 },[] )
 
@@ -86,6 +87,51 @@ function getData(event) {
         
     // })    
 }
+
+function newYork() {
+    let state = 'NY';
+    setState(state)
+    Axios
+    .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`)
+    .then(res => 
+        {
+            console.log(res.data)
+        if (res.data.length !== 0) {
+            // console.log(res.data)
+        setData(res.data);
+        if (res.data[0].pending) {
+            setPending(res.data[0].pending)
+        } 
+        setILPositive(res.data[0].positive);
+        setILNegative(res.data[0].negative)
+        setStateYesterday(res.data[1].positive)
+        setTotal(res.data[0].total)
+        setTotalYesterday(res.data[1].total)
+        }
+        else {
+            setData('');
+            setILPositive('');
+            setILNegative('')
+            setStateYesterday('')
+            setTotal('')
+            setTotalYesterday('')
+        }
+        
+        })
+    // .then(() => {
+    //         Axios
+    //         .get(`https://covidtracking.com/api/states/daily?state= this state`) 
+    //         .then(res => {
+    //             setStateToday(res.data[0])
+    //             console.log(stateToday)
+    //             // const today = res.data[0].positive
+    //             // console.log(today)
+    //         })
+        
+    // })    
+}
+
+
 
 
 const styleDiv = {
