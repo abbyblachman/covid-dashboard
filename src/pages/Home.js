@@ -1,11 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Component from '../components/Component';
 import Leaders from '../components/Leaders';
-// import Map from '../components/MapHC';
+import Map from '../components/MapHC';
 import MediaQuery from 'react-responsive';
+import { AllStatesDataContext } from '../utils/AllStatesDataContext';
+import Axios from 'axios';
 import moment from 'moment';
 
 function Home() {
+  const [AllStatesData, setAllStatesData] = useContext(AllStatesDataContext);
+
+  useEffect(() => {
+    allData();
+  }, []);
+
+  function allData() {
+    Axios.get('https://covidtracking.com/api/states').then(res =>
+      setAllStatesData(res.data)
+    );
+  }
+
   const style = {
     paddingBottom: '5rem',
     marginLeft: 'auto',
@@ -29,6 +43,7 @@ function Home() {
 
   return (
     <>
+      {console.log({ AllStatesData })}
       <div className="container" style={style}>
         <MediaQuery maxDeviceWidth={1223} device={{ deviceWidth: 1599 }}>
           <Component styles={styleSmall}></Component>
@@ -39,7 +54,7 @@ function Home() {
           <Leaders styles={style}></Leaders>
         </MediaQuery>
       </div>
-      {/* <Map /> */}
+      <Map />
     </>
   );
 }
