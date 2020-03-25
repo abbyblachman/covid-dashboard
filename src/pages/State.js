@@ -32,7 +32,7 @@ function USA () {
 
 useEffect(() => {
     if (state) {
-        newYork();
+        getData();
         USA();
     }
     if (state === 'undefined') {
@@ -89,48 +89,7 @@ function onClick(event) {
         })
     }
 
-    function newYork() {
-        setState('NY')
-        Axios
-        .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=NY`)
-        .then(res => {
-            if (res.data.length === 0) {
-                setILPositive('');
-            setILNegative('')
-            setStateYesterday('')
-            setTotal('')
-            setTotalYesterday('')
-            res.data.reverse();
-            setTests('')
-            setPositive('')
-            setDate('')
-            }
-            else {
-                if (res.data[0].pending) {
-                    setPending(res.data[0].pending)
-                } 
-                setILPositive(res.data[0].positive);
-                setILNegative(res.data[0].negative)
-                setStateYesterday(res.data[1].positive)
-                setTotal(res.data[0].total)
-                setTotalYesterday(res.data[1].total)
-                res.data.reverse();
-                // console.log(res.data)
-                res.data.forEach(data => {
-                    setTests(tests => [...tests, data.total])
-                })
-                res.data.forEach(data => {
-                    setPositive(positive => [...positive, data.positive])
-                })
-                res.data.forEach(data => {
-                    let newDate = moment(`${data.date}`).format('MMMM Do')
-                    setDate(date => [...date, newDate])
-                })
-                
-            }
-            
-        })
-    }
+    
 
     const styleLine = {
         maxWidth: '100%', 
