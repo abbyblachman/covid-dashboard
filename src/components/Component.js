@@ -19,6 +19,7 @@ const [totalYesterday, setTotalYesterday] = useState(0);
 const [usaPostive, setUSAPositive] = useState(0);
 const [usaTotal, setUSATotal] = useState(0);
 const [date, setDate] = useState();
+const [pending, setPending] = useState('[Data unavailable]');
 
 
 function USA () {
@@ -50,10 +51,13 @@ function getData(event) {
     .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`)
     .then(res => 
         {
-            // console.log(res.data)
+            console.log(res.data)
         if (res.data.length !== 0) {
             // console.log(res.data)
         setData(res.data);
+        if (res.data[0].pending) {
+            setPending(res.data[0].pending)
+        } 
         setILPositive(res.data[0].positive);
         setILNegative(res.data[0].negative)
         setStateYesterday(res.data[1].positive)
@@ -239,8 +243,9 @@ const subHeadLargeSmall = {
                 <div>
         <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {Math.floor((iLPositive/total)*100)}% of those who have been tested in the state.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. That's {Math.floor((ilNegative/total*100))}% of those who have been tested in the state.  </div>
-                <div><strong>{total} </strong>people have been tested in {state} so far.</div>
-                <div>{state} has {Math.floor((iLPositive/usaPostive)*100)} of all positive cases across the United States.</div>
+                <div><strong>{total} </strong>people have been tested in {state} so far. {pending} tests are currently pending results.</div>
+                <br></br>
+                <div><strong>{state}</strong> has {Math.floor((iLPositive/usaPostive)*100)} of all positive cases across the United States.</div>
                 <div style={buttonParent}><Link to={`/${state}`}><button style={button}>{state}: see more</button></Link></div>
 
                </div>
@@ -320,8 +325,9 @@ const subHeadLargeSmall = {
                 <div>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {Math.floor((iLPositive/total)*100)}% of those who have been tested in the state.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. That's {Math.floor((ilNegative/total*100))}% of those who have been tested in the state. </div>
-                <div><strong>{total} </strong>people have been tested in {state} so far.</div>
-                <div>{state} has around {Math.floor((iLPositive/usaPostive)*100)}% of all positive cases across the United States.</div>
+                <div><strong>{total} </strong>people have been tested in {state} so far. {pending} tests are currently pending results.</div>
+                <br></br>
+                <div><strong>{state}</strong> has around {Math.floor((iLPositive/usaPostive)*100)}% of all positive cases across the United States.</div>
                 <div style={buttonParent}><Link to={`/${state}`}><button style={button}>{state}: see more</button></Link></div>
                 
                </div>
