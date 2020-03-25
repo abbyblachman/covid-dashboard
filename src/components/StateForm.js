@@ -1,38 +1,29 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import Axios from 'axios';
-// import Totals from '../components/Totals';
-import { relativeTimeRounding } from 'moment';
 import MediaQuery from 'react-responsive';
 import { USADataContext } from '../utils/USAData';
 import { StateDataContext } from '../utils/StateData';
+import { StateNameContext } from '../utils/StateName';
 
-function Component() {
-  const [state, setState] = useState();
+function StateForm() {
+  const [stateName, setStateName] = useContext(StateNameContext);
   const [USAData, setUSAData] = useContext(USADataContext);
   const [stateData, setStateData] = useContext(StateDataContext);
 
   // setNumbers();
   function onClick(event) {
     let state = event.target.value;
+    console.log("i'm the state", state);
     getData(state);
   }
   function getData(state) {
-    setState(state);
+    setStateName(state);
     Axios.get(
       `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`
     ).then(res => setStateData(res.data));
   }
 
-  const styleDiv = {
-    // marginLeft: 'auto',
-    // marginRight: 'auto',
-    // marginTop: '8rem',
-    // width: '40rem',
-    // fontSize: '1rem',
-    // paddingLeft: '10rem',
-    // paddingRight: '10rem'
-  };
+  const styleDiv = {};
 
   const form = {
     paddingBottom: '1.5rem',
@@ -107,7 +98,7 @@ function Component() {
             <br></br>
             <form className="form" action="#">
               <span style={formSpan}>Choose your state: </span>
-              <select value={state} id="state" name="state" onChange={onClick}>
+              <select id="state" name="state" onChange={onClick}>
                 <option value="Choose">State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -184,7 +175,7 @@ function Component() {
             <br></br>
             <form className="form" action="#">
               <span style={formSpanLarge}>Choose your state: </span>
-              <select value={state} id="state" name="state" onChange={onClick}>
+              <select id="state" name="state" onChange={onClick}>
                 <option value="Choose">State</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -248,4 +239,4 @@ function Component() {
   );
 }
 
-export default Component;
+export default StateForm;
