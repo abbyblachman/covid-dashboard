@@ -18,12 +18,14 @@ const [total, setTotal] = useState(0);
 const [totalYesterday, setTotalYesterday] = useState(0);
 const [usaPostive, setUSAPositive] = useState(0);
 const [usaTotal, setUSATotal] = useState(0);
+const [date, setDate] = useState();
 
 
 function USA () {
     Axios
         .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/us`)
         .then(res => {
+            // console.log(res.data)
             setUSAPositive(res.data[0].positive)
             setUSATotal(res.data[0].total)
         })
@@ -49,7 +51,8 @@ function getData(event) {
     .then(res => 
         {
             // console.log(res.data)
-        if (res.data !== null) {
+        if (res.data.length !== 0) {
+            // console.log(res.data)
         setData(res.data);
         setILPositive(res.data[0].positive);
         setILNegative(res.data[0].negative)
@@ -58,7 +61,12 @@ function getData(event) {
         setTotalYesterday(res.data[1].total)
         }
         else {
-            alert('No data available at this time')
+            setData('');
+            setILPositive('');
+            setILNegative('')
+            setStateYesterday('')
+            setTotal('')
+            setTotalYesterday('')
         }
         
         })
@@ -181,6 +189,7 @@ const subHeadLargeSmall = {
             <option value="DC">District of Columbia</option>
             <option value="FL">Florida</option>
             <option value="GA">Georgia</option>
+            <option value="GU">Guam</option>
             <option value="HI">Hawaii</option>
             <option value="ID">Idaho</option>
             <option value="IL">Illinois</option>
@@ -209,6 +218,7 @@ const subHeadLargeSmall = {
             <option value="OK">Oklahoma</option>
             <option value="OR">Oregon</option>
             <option value="PA">Pennsylvania</option>
+            <option value="PR">Puerto Rico</option>
             <option value="RI">Rhode Island</option>
             <option value="SC">South Carolina</option>
             <option value="SD">South Dakota</option>
@@ -258,6 +268,7 @@ const subHeadLargeSmall = {
             <option value="DC">District of Columbia</option>
             <option value="FL">Florida</option>
             <option value="GA">Georgia</option>
+            <option value="GU">Guam</option>
             <option value="HI">Hawaii</option>
             <option value="ID">Idaho</option>
             <option value="IL">Illinois</option>
@@ -286,6 +297,7 @@ const subHeadLargeSmall = {
             <option value="OK">Oklahoma</option>
             <option value="OR">Oregon</option>
             <option value="PA">Pennsylvania</option>
+            <option value="PR">Puerto Rico</option>
             <option value="RI">Rhode Island</option>
             <option value="SC">South Carolina</option>
             <option value="SD">South Dakota</option>
@@ -307,7 +319,7 @@ const subHeadLargeSmall = {
                 <div>
                <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {iLPositive - stateYesterday} more than yesterday.</div>
                <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. </div>
-                <div><strong>{total} </strong>people have been tested in {state}so far. That's {total - totalYesterday} more people than yesterday.</div>
+                <div><strong>{total} </strong>people have been tested in {state} so far. That's {total - totalYesterday} more people than yesterday.</div>
                 <div style={buttonParent}><Link to={`/${state}`}><button style={button}>{state}: see more</button></Link></div>
                 
                </div>

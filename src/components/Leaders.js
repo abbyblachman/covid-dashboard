@@ -40,6 +40,10 @@ axios
             axios
             .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${startdate}`)
             .then(res => {
+                if (res.data.length === 0) {
+                    alert('The API is reloading data at this time. Please reload the page.')
+                }
+                else if (res.data.length !== 0) {
                 res.data.forEach(data => {
                     arr.push({
                         state: data.state,
@@ -48,6 +52,7 @@ axios
                 })
                 arr.sort(function(a, b){ return b.positive - a.positive});
                 setPositive(arr);
+            }
             })
             .then(() => {
                 setStateOne(arr[0])
@@ -89,7 +94,12 @@ const a = {
     color: 'black'
 }
 
-
+const subHeadSmall = {
+    fontFamily: 'Helvetica', 
+    marginTop: '2rem', 
+    fontSize: '0.5rem',
+    padding: '1.5rem'
+}
 
 return(
     <div style={style}>
@@ -100,6 +110,7 @@ return(
         <div><Link to={`/${stateThree.state}`}><strong style={a}>{stateThree.state}</strong></Link>: {stateThree.positive} cases. {stateThree.total} tests administered.</div>
         <div><Link to={`/${stateFour.state}`}><strong style={a}>{stateFour.state}</strong></Link>: {stateFour.positive} cases. {stateFour.total} tests administered.</div>
         <div><Link to={`/${stateFive.state}`}><strong style={a}>{stateFive.state}</strong></Link>: {stateFive.positive} cases. {stateFive.total} tests administered.</div>
+        <div style={subHeadSmall}>Built w/ ❤️ by Abby Blachman. View the <a href="https://github.com/abbyblachman/covid-dashboard">source code</a> on GitHub.</div>
     </div>
     )
 }
