@@ -5,14 +5,17 @@ import State from './pages/State';
 import { AllStatesDataProvider } from './utils/AllStatesDataContext';
 import { USADataProvider } from './utils/USAData';
 import { StateDataProvider } from './utils/StateData';
+import { StateNameProvider } from './utils/StateName';
 function App() {
   return (
     <Router>
       <AllStatesDataProvider>
         <USADataProvider>
           <StateDataProvider>
-            <Route exact path="/" component={Home}></Route>
-            <Route exact path="/:state" component={State}></Route>
+            <StateNameProvider>
+              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/:state" component={State}></Route>
+            </StateNameProvider>
           </StateDataProvider>
         </USADataProvider>
       </AllStatesDataProvider>
