@@ -31,7 +31,6 @@ function StateResults() {
           <div style={styleDiv}>
             <div>
               {' '}
-              ***********************************************************
               <div>
                 <strong>{stateData[0].positive}</strong> people have tested
                 positive for COVID-19 in {stateName}. That's{' '}

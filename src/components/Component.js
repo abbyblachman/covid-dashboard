@@ -5,11 +5,12 @@ import Axios from 'axios';
 import { relativeTimeRounding } from 'moment';
 import MediaQuery from 'react-responsive';
 import { USADataContext } from '../utils/USAData';
+import { StateDataContext } from '../utils/StateData';
 
 function Component() {
-  const [data, setData] = useState(false);
-  const [iLPositive, setILPositive] = useState(0);
-  const [ilNegative, setILNegative] = useState(0);
+  //   const [data, setData] = useState(false);
+  //   const [iLPositive, setILPositive] = useState(0);
+  //   const [ilNegative, setILNegative] = useState(0);
   const [state, setState] = useState();
   const [stateYesterday, setStateYesterday] = useState(0);
   const [total, setTotal] = useState(0);
@@ -20,6 +21,7 @@ function Component() {
   const [pending, setPending] = useState('NaN');
 
   const [USAData, setUSAData] = useContext(USADataContext);
+  const [stateData, setStateData] = useContext(StateDataContext);
 
   function USA() {
     Axios.get(
@@ -32,8 +34,8 @@ function Component() {
   }
 
   useEffect(() => {
-    getData('NY');
-    USA();
+    // getData('NY');
+    // USA();
   }, []);
 
   // setNumbers();
@@ -41,32 +43,37 @@ function Component() {
     let state = event.target.value;
     getData(state);
   }
-
   function getData(state) {
     setState(state);
     Axios.get(
       `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`
-    ).then(res => {
-      if (res.data.length !== 0) {
-        // console.log(res.data)
-        setData(res.data);
-        if (res.data[0].pending) {
-          setPending(res.data[0].pending);
-        }
-        setILPositive(res.data[0].positive);
-        setILNegative(res.data[0].negative);
-        setStateYesterday(res.data[1].positive);
-        setTotal(res.data[0].total);
-        setTotalYesterday(res.data[1].total);
-      } else {
-        setData('');
-        setILPositive('');
-        setILNegative('');
-        setStateYesterday('');
-        setTotal('');
-        setTotalYesterday('');
-      }
-    });
+    ).then(res => setStateData(res.data));
+
+    //   function getData(state) {
+    //     setState(state);
+    //     Axios.get(
+    //       `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`
+    //     ).then(res => {
+    //       if (res.data.length !== 0) {
+    //         // console.log(res.data)
+    //         setData(res.data);
+    //         if (res.data[0].pending) {
+    //           setPending(res.data[0].pending);
+    //         }
+    //         setILPositive(res.data[0].positive);
+    //         setILNegative(res.data[0].negative);
+    //         setStateYesterday(res.data[1].positive);
+    //         setTotal(res.data[0].total);
+    //         setTotalYesterday(res.data[1].total);
+    //       } else {
+    //         setData('');
+    //         setILPositive('');
+    //         setILNegative('');
+    //         setStateYesterday('');
+    //         setTotal('');
+    //         setTotalYesterday('');
+    //       }
+    //     });
     // .then(() => {
     //         Axios
     //         .get(`https://covidtracking.com/api/states/daily?state= this state`)
@@ -171,10 +178,10 @@ function Component() {
             <div style={subHead}>
               {USAData ? USAData[0].positive : ''} people have tested positive
               for COVID-19 in the United States.{' '}
-              {USAData ? USAData[0].positive : ''} have been tested.
+              {USAData ? USAData[0].total : ''} have been tested.
             </div>
             <br></br>
-            <USA />
+            {/* <USA /> */}
             <form className="form" action="#">
               <span style={formSpan}>Choose your state: </span>
               <select value={state} id="state" name="state" onChange={onClick}>
@@ -235,7 +242,7 @@ function Component() {
               </select>
             </form>
           </div>
-          <div>
+          {/* <div>
             <div>
               <strong>{iLPositive}</strong> people have tested positive for
               COVID-19 in {state}. That's{' '}
@@ -265,7 +272,7 @@ function Component() {
             </div>
           </div>
           {/* <Totals data={data}></Totals> */}
-        </div>
+        </div>{' '}
       </MediaQuery>
       <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
         <div style={styleDiv}>
@@ -277,8 +284,9 @@ function Component() {
               Data updates daily at 4:00 p.m. EST.
             </div>
             <div style={subHeadLarge}>
-              <strong>{usaPostive}</strong> people have tested positive for
-              COVID-19 in the United States. {usaTotal} have been tested.
+              <strong> {USAData ? USAData[0].positive : ''}</strong> people have
+              tested positive for COVID-19 in the United States.{' '}
+              {USAData ? USAData[0].total : ''} have been tested.
             </div>
             <br></br>
             <form className="form" action="#">
@@ -342,7 +350,7 @@ function Component() {
             </form>
           </div>
 
-          <div>
+          {/* <div>
             <div>
               <strong>{iLPositive}</strong> people have tested positive for
               COVID-19 in {state}. That's{' '}
@@ -372,7 +380,7 @@ function Component() {
             </div>
           </div>
           {/* <Totals data={data}></Totals> */}
-        </div>
+        </div>{' '}
       </MediaQuery>
     </>
   );
