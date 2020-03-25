@@ -32,62 +32,21 @@ function Component() {
   }
 
   useEffect(() => {
-    newYork();
+    getData('NY');
     USA();
   }, []);
 
   // setNumbers();
   function onClick(event) {
-    getData(event);
-  }
-
-  function getData(event) {
     let state = event.target.value;
-    setState(state);
-    Axios.get(
-      `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`
-    ).then(res => {
-      console.log(res.data);
-      if (res.data.length !== 0) {
-        // console.log(res.data)
-        setData(res.data);
-        if (res.data[0].pending) {
-          setPending(res.data[0].pending);
-        }
-        setILPositive(res.data[0].positive);
-        setILNegative(res.data[0].negative);
-        setStateYesterday(res.data[1].positive);
-        setTotal(res.data[0].total);
-        setTotalYesterday(res.data[1].total);
-      } else {
-        setData('');
-        setILPositive('');
-        setILNegative('');
-        setStateYesterday('');
-        setTotal('');
-        setTotalYesterday('');
-      }
-    });
-    // .then(() => {
-    //         Axios
-    //         .get(`https://covidtracking.com/api/states/daily?state= this state`)
-    //         .then(res => {
-    //             setStateToday(res.data[0])
-    //             console.log(stateToday)
-    //             // const today = res.data[0].positive
-    //             // console.log(today)
-    //         })
-
-    // })
+    getData(state);
   }
 
-  function newYork() {
-    let state = 'NY';
+  function getData(state) {
     setState(state);
     Axios.get(
       `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`
     ).then(res => {
-      console.log(res.data);
       if (res.data.length !== 0) {
         // console.log(res.data)
         setData(res.data);
@@ -211,8 +170,8 @@ function Component() {
             <div style={subHeadSmall}>Data updates daily at 4:00 p.m. EST.</div>
             <div style={subHead}>
               {USAData ? USAData[0].positive : ''} people have tested positive
-              for COVID-19 in the United States.
-              {USAData ? USAData[0].total : ''} have been tested.
+              for COVID-19 in the United States.{' '}
+              {USAData ? USAData[0].positive : ''} have been tested.
             </div>
             <br></br>
             <USA />
