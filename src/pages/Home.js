@@ -4,19 +4,28 @@ import Leaders from '../components/Leaders';
 import Map from '../components/MapHC';
 import MediaQuery from 'react-responsive';
 import { AllStatesDataContext } from '../utils/AllStatesDataContext';
+import { USADataContext } from '../utils/USAData';
 import Axios from 'axios';
 import moment from 'moment';
 
 function Home() {
   const [AllStatesData, setAllStatesData] = useContext(AllStatesDataContext);
+  const [USAData, setUSAData] = useContext(USADataContext);
 
   useEffect(() => {
-    allData();
+    fetchAllStatesData();
+    fetchUSAData();
   }, []);
 
-  function allData() {
+  function fetchAllStatesData() {
     Axios.get('https://covidtracking.com/api/states').then(res =>
       setAllStatesData(res.data)
+    );
+  }
+
+  function fetchUSAData() {
+    Axios.get('https://covidtracking.com/api/us').then(res =>
+      setUSAData(res.data)
     );
   }
 
@@ -43,7 +52,7 @@ function Home() {
 
   return (
     <>
-      {console.log({ AllStatesData })}
+      {console.log('this shoule an array with an object of 6 vars', USAData)}
       <div className="container" style={style}>
         <MediaQuery maxDeviceWidth={1223} device={{ deviceWidth: 1599 }}>
           <Component styles={styleSmall}></Component>
