@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Component from '../components/Component';
 import Leaders from '../components/Leaders';
+import LeaderTwo from '../components/LeadersTwo';
 import Map from '../components/MapHC';
 import MediaQuery from 'react-responsive';
 import StateResults from '../components/StateResults';
@@ -70,15 +71,17 @@ function Home() {
       <div className="container" style={style}>
         <MediaQuery maxDeviceWidth={1223} device={{ deviceWidth: 1599 }}>
           {/* <Component styles={styleSmall}></Component> */}
+          {/* <Leaders styles={styleSmall}></Leaders> */}
           <StateForm styles={styleSmall}></StateForm>
           <StateResults styles={styleSmall}></StateResults>
-          <Leaders styles={styleSmall}></Leaders>
+          <LeaderTwo styles={styleSmall}></LeaderTwo>
         </MediaQuery>
         <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
           {/* <Component styles={style}></Component> */}
+          {/* <Leaders styles={style}></Leaders> */}
           <StateForm styles={style}></StateForm>
           <StateResults styles={style}></StateResults>
-          <Leaders styles={style}></Leaders>
+          <LeaderTwo styles={style}></LeaderTwo>
         </MediaQuery>
       </div>
       <Map />
