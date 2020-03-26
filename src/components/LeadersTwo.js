@@ -18,27 +18,13 @@ function Leaders() {
   }, []);
 
   function getData() {
-    const arr = [];
-
+    let arr = [];
     axios
       .get(
         `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${now}`
       )
       .then(res => {
-        res.data.forEach(data => {
-          arr.push({
-            state: data.state,
-            positive: data.positive,
-            total: data.total
-          });
-        });
-        arr.sort(function(a, b) {
-          return b.positive - a.positive;
-        });
-        setTopStates(arr);
-      })
-      .then(() => {
-        if (arr.length === 0) {
+        if (res.data.error === true) {
           axios
             .get(
               `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${startdate}`
@@ -48,8 +34,19 @@ function Leaders() {
                 alert(
                   'The API is reloading data at this time. Please reload the page.'
                 );
-              }
-              if (res.data.length !== 0) {
+              } else if (res.data.length !== 0) {
+                res.data.forEach(data => {
+                  arr.push({
+                    state: data.state,
+                    positive: data.positive,
+                    total: data.total
+                  });
+                });
+                arr.sort(function(a, b) {
+                  return b.positive - a.positive;
+                });
+                setTopStates(arr);
+              } else {
                 res.data.forEach(data => {
                   arr.push({
                     state: data.state,
@@ -144,7 +141,7 @@ function Leaders() {
           </div>
         </div>
       ) : (
-        'Wainting for current Data'
+        ' Wainting for up to date information '
       )}
     </>
   );
