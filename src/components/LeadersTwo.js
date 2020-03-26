@@ -144,7 +144,7 @@ function Leaders() {
           </div>
         </div>
       ) : (
-        'waiting for info'
+        'Wainting for current Data'
       )}
     </>
   );
