@@ -39,14 +39,11 @@ function getData() {
 axios
 .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${now}`)
 .then(res => {
+    console.log('in the then')
     if (res.data.error === true) {
         axios
             .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${startdate}`)
             .then(res => {
-                if (res.data.length === 0) {
-                    alert('The API is reloading data at this time. Please reload the page.')
-                }
-                else if (res.data.length !== 0) {
                 res.data.forEach(data => {
                     arr.push({
                         state: data.state,
@@ -55,6 +52,7 @@ axios
                 })
                 arr.sort(function(a, b){ return b.positive - a.positive});
                 setPositive(arr);
+            })
     } else {
         res.data.forEach(data => {
                 arr.push({
@@ -64,8 +62,8 @@ axios
     })
     arr.sort(function(a, b){ return b.positive - a.positive});
     setPositive(arr);
-    }
-    
+    console.log(arr)
+    }   
 })
             .then(() => {
                 setStateOne(arr[0])
@@ -76,16 +74,8 @@ axios
             })
            
         }
-        else {
-            setStateOne(arr[0])
-            setStateTwo(arr[1])
-            setStateThree(arr[2])
-            setStateFour(arr[3])
-            setStateFive(arr[4]) 
-        }
+      
     
-    })
-}
 
 
 
@@ -115,7 +105,7 @@ const subHeadSmall = {
 
 return(
     <div style={style}>
-        {/* {console.log(stateOne)} */}
+        {console.log(stateOne)}
         <div style={span}>States with the most positive tests so far:</div>
         <div><Link to={`/${stateOne.state}`}><strong style={a}>{stateOne.state}</strong></Link>: {stateOne.positive} cases statewide. {Math.floor((stateOne.positive/usaPostive)*100)}% of cases nationwide are in this state.</div>
         <div><Link to={`/${stateTwo.state}`}><strong style={a}>{stateTwo.state}</strong></Link>: {stateTwo.positive} cases statewide. {Math.floor((stateTwo.positive/usaPostive)*100)}% of cases nationwide are in this state.</div>
