@@ -35,14 +35,14 @@ function StateResults() {
                 <strong>{stateData[0].positive}</strong> people have tested
                 positive for COVID-19 in {stateName}. That's{' '}
                 {Math.floor((stateData[0].positive / stateData[0].total) * 100)}
-                % of those who have been tested in the stateName.
+                % of those who have been tested in {stateName}.
               </div>
               <br></br>
               <div>
                 <strong>{stateData[0].negative}</strong> people have tested
                 negative for COVID-19 in {stateName}. That's{' '}
                 {Math.floor((stateData[0].negative / stateData[0].total) * 100)}
-                % of those who have been tested in the stateName.
+                % of those who have been tested in {stateName}.
               </div>
               <br></br>
               <div>
