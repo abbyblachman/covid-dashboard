@@ -39,18 +39,8 @@ function getData() {
 axios
 .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${now}`)
 .then(res => {
-    res.data.forEach(data => {
-        arr.push({
-            state: data.state,
-            positive: data.positive, 
-            total: data.total})
-    })
-    arr.sort(function(a, b){ return b.positive - a.positive});
-    setPositive(arr);
-})
-    .then(() => {
-        if (arr.length === 0) {  
-            axios
+    if (res.data.error === true) {
+        axios
             .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${startdate}`)
             .then(res => {
                 if (res.data.length === 0) {
@@ -65,8 +55,18 @@ axios
                 })
                 arr.sort(function(a, b){ return b.positive - a.positive});
                 setPositive(arr);
-            }
-            })
+    } else {
+        res.data.forEach(data => {
+                arr.push({
+                    state: data.state,
+                    positive: data.positive, 
+                    total: data.total})
+    })
+    arr.sort(function(a, b){ return b.positive - a.positive});
+    setPositive(arr);
+    }
+    
+})
             .then(() => {
                 setStateOne(arr[0])
                 setStateTwo(arr[1])
