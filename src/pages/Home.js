@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Component from '../components/Component';
 import Leaders from '../components/Leaders';
-import Map from '../components/MapHC';
+// import Map from '../components/MapHC';
 import MediaQuery from 'react-responsive';
 import StateResults from '../components/StateResults';
 import StateForm from '../components/StateForm';
@@ -81,7 +81,7 @@ function Home() {
           <Leaders styles={style}></Leaders>
         </MediaQuery>
       </div>
-      <Map />
+      {/* <Map /> */}
     </>
   );
 }
