@@ -1,0 +1,42 @@
+.map {
+  display: block;
+}
+@media only screen and (max-width: 500px) {
+  .titleHeader {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-family: 'Bree Serif';
+    margin-bottom: 1rem;
+  }
+  .homeWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5rem;
+  }
+  .infoCards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .map {
+    display: none;
+  }
+  .stateFormSection {
+  }
+  .subHeader {
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-family: 'Helvetica';
+    margin-top: '0.5rem';
+  }
+}
+
+/* @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .map {
+    display: none;
+  }
+} */
