@@ -1,13 +1,56 @@
+.cards {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 0.5rem;
+  transition: 0.3s;
+}
+.cardContent {
+  padding: 1rem;
+}
+.cardTitle {
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.content {
+  display: flex;
+}
+.formWrapper {
+  padding: 2rem;
+}
+.infoCards {
+  width: 30%;
+  padding: 1.5rem;
+}
 .map {
   display: block;
 }
+.subHeader {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-family: 'Helvetica';
+  margin-top: '0.5rem';
+}
+.titleHeader {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: 'Bree Serif';
+  margin-bottom: 1rem;
+}
+
 @media only screen and (max-width: 500px) {
-  .titleHeader {
+  .cardContent {
+    padding: 0.5rem;
+  }
+  .content {
     display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    font-family: 'Bree Serif';
-    margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .formWrapper {
+    padding: 0.25rem;
   }
   .homeWrapper {
     display: flex;
@@ -16,9 +59,8 @@
     margin: 1.5rem;
   }
   .infoCards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+    padding: 0.25rem;
   }
 
   .map {
@@ -33,10 +75,11 @@
     font-family: 'Helvetica';
     margin-top: '0.5rem';
   }
-}
-
-/* @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-  .map {
-    display: none;
+  .titleHeader {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-family: 'Bree Serif';
+    margin-bottom: 1rem;
   }
-} */
+}

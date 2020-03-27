@@ -91,7 +91,6 @@ function Leaders() {
     <>
       {USAData && topStates ? (
         <div style={style}>
-          <div style={span}>States with the most positive tests so far:</div>
           <div>
             <Link to={`/${topStates[0].state}`}>
               <strong style={a}>{topStates[0].state}</strong>

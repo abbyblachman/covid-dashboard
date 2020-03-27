@@ -13,7 +13,7 @@ function StateForm() {
   // setNumbers();
   function onClick(event) {
     let state = event.target.value;
-    console.log("i'm the state", state);
+    setStateName(state);
     getData(state);
   }
   function getData(state) {
@@ -35,22 +35,9 @@ function StateForm() {
     fontSize: '1.5rem'
   };
 
-  const titleSpan = {
-    textAlign: 'left',
-    fontSize: '2rem',
-    fontFamily: 'Bree Serif',
-    marginBottom: '1rem'
-  };
-
   const subHead = {
     fontFamily: 'Helvetica',
     marginTop: '0.5rem'
-  };
-
-  const subHeadSmall = {
-    fontFamily: 'Helvetica',
-    marginTop: '0.5rem',
-    fontSize: '0.8rem'
   };
 
   const formLarge = {
@@ -63,22 +50,9 @@ function StateForm() {
     fontSize: '1.5rem'
   };
 
-  const titleSpanLarge = {
-    textAlign: 'left',
-    fontSize: '2rem',
-    fontFamily: 'Bree Serif',
-    marginBottom: '1rem'
-  };
-
   const subHeadLarge = {
     fontFamily: 'Helvetica',
     marginTop: '0.5rem'
-  };
-
-  const subHeadLargeSmall = {
-    fontSize: '0.8rem',
-    fontFamily: 'Helvetica',
-    marginBottom: '1rem'
   };
 
   return (
@@ -86,10 +60,6 @@ function StateForm() {
       <MediaQuery maxDeviceWidth={1223} device={{ deviceWidth: 1599 }}>
         <div style={styleDiv}>
           <div style={form}>
-            <strong>
-              <div style={titleSpan}>COVID-19 BY STATE</div>
-            </strong>
-            <div style={subHeadSmall}>Data updates daily at 4:00 p.m. EST.</div>
             <div style={subHead}>
               {USAData ? USAData[0].positive : ''} people have tested positive
               for COVID-19 in the United States.{' '}
@@ -161,12 +131,6 @@ function StateForm() {
       <MediaQuery minDeviceWidth={1224} device={{ deviceWidth: 1600 }}>
         <div style={styleDiv}>
           <div style={formLarge}>
-            <strong>
-              <div style={titleSpanLarge}>COVID-19 BY STATE</div>
-            </strong>
-            <div style={subHeadLargeSmall}>
-              Data updates daily at 4:00 p.m. EST.
-            </div>
             <div style={subHeadLarge}>
               <strong> {USAData ? USAData[0].positive : ''}</strong> people have
               tested positive for COVID-19 in the United States.{' '}

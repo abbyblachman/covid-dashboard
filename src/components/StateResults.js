@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { USADataContext } from '../utils/USAData';
 import { StateDataContext } from '../utils/StateData';
 import { StateNameContext } from '../utils/StateName';
+import State2 from '../components/State2';
 
-function StateResults() {
+function StateResults(props) {
   const [stateName, setStateName] = useContext(StateNameContext);
   const [USAData, setUSAData] = useContext(USADataContext);
   const [stateData, setStateData] = useContext(StateDataContext);
+  const [showChart, setShowChart] = useState(false);
 
   const styleDiv = {};
 
@@ -25,7 +26,6 @@ function StateResults() {
 
   return (
     <>
-      {/* {USAData ? console.log('this is data stateName', USAData[0].positive) : null} */}
       {stateData && USAData ? (
         <>
           <div style={styleDiv}>
@@ -57,15 +57,24 @@ function StateResults() {
                 % of all positive cases across the United States.
               </div>
               <div style={buttonParent}>
-                <Link to={`/${stateName}`}>
-                  <button style={button}>{stateName}: see more</button>
-                </Link>
+                <button style={button} onClick={() => setShowChart(!showChart)}>
+                  {stateName}: {showChart ? 'Hide' : 'See More'}
+                </button>
               </div>
+              {showChart ? <State2></State2> : ''}
             </div>
           </div>
         </>
       ) : (
-        'Waiting for information'
+        <div>
+          'Waiting for information'
+          <div style={buttonParent}>
+            <button style={button} onClick={() => setShowChart(!showChart)}>
+              {stateName}: {showChart ? 'Hide' : 'See More'}
+            </button>
+          </div>
+          {showChart ? <State2></State2> : ''}
+        </div>
       )}
     </>
   );
