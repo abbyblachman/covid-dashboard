@@ -91,9 +91,9 @@ function StateForm() {
             </strong>
             <div style={subHeadSmall}>Data updates daily at 4:00 p.m. EST.</div>
             <div style={subHead}>
-              {USAData ? USAData[0].positive : ''} people have tested positive
+              {USAData ? USAData[0].positive : ''} people are known to have tested positive
               for COVID-19 in the United States.{' '}
-              {USAData ? USAData[0].total : ''} have been tested.
+              {USAData ? USAData[0].total : ''} are known to have been tested.
             </div>
             <br></br>
             <form className="form" action="#">
@@ -168,9 +168,9 @@ function StateForm() {
               Data updates daily at 4:00 p.m. EST.
             </div>
             <div style={subHeadLarge}>
-              <strong> {USAData ? USAData[0].positive : ''}</strong> people have
+              <strong> {USAData ? USAData[0].positive : ''}</strong> people are known to have
               tested positive for COVID-19 in the United States.{' '}
-              {USAData ? USAData[0].total : ''} have been tested.
+              {USAData ? USAData[0].total : ''} are known to have been tested.
             </div>
             <br></br>
             <form className="form" action="#">

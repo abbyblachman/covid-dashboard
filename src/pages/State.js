@@ -238,13 +238,13 @@ function onClick(event) {
         <LineChart tests={tests} positive={positive} date={date}></LineChart>
         </div>
         </div>
-        <div style={spanParent}><span style={totalSpan}><strong>Total tests</strong></span><span style={positiveSpan}><strong>Positive tests</strong></span></div>
+        <div style={spanParent}><span style={totalSpan}><strong>Total known tests</strong></span><span style={positiveSpan}><strong>Known positive tests</strong></span></div>
         <div style={text}>
-               <div ><strong>{iLPositive}</strong> people have tested positive for COVID-19 in {state}. That's {Math.floor((iLPositive/total)*100)}% of those who have been tested in the state.</div>
-               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. That's {Math.floor((ilNegative/total)*100)}% of those who have been tested in the state.</div>
+               <div ><strong>{iLPositive}</strong> known people have tested positive for COVID-19 in {state}. That's {Math.floor((iLPositive/total)*100)}% of those who have reported to have been tested in the state.</div>
+               <div ><strong>{ilNegative}</strong> people have tested negative for COVID-19 in {state}. That's {Math.floor((ilNegative/total)*100)}% of those who have reported to have been tested in the state.</div>
                 <div><strong>{total} </strong>people have been tested in {state} so far. {pending} tests are currently pending results.</div>
                 <br></br>
-                <div><strong>{state}</strong> has around {Math.floor((iLPositive/usaPostive)*100)}% of all positive cases across the United States.</div>
+                <div><strong>{state}</strong> has around {Math.floor((iLPositive/usaPostive)*100)}% of all known positive cases across the United States.</div>
 
                </div>
         </div>

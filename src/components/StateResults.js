@@ -32,19 +32,19 @@ function StateResults() {
             <div>
               {' '}
               <div>
-                <strong>{stateData[0].positive}</strong> people have tested
+                <strong>{stateData[0].positive}</strong> people have been reported to have tested
                 positive for COVID-19 in {stateName}. That's{' '}
                 {Math.floor((stateData[0].positive / stateData[0].total) * 100)}
-                % of those who have been tested in {stateName}.
+                % of those who have been reported to have been tested in {stateName}.
               </div>
               <div>
-                <strong>{stateData[0].negative}</strong> people have tested
+                <strong>{stateData[0].negative}</strong> people have been reported to have tested
                 negative for COVID-19 in {stateName}. That's{' '}
                 {Math.floor((stateData[0].negative / stateData[0].total) * 100)}
-                % of those who have been tested in {stateName}.
+                % of those who have been reported to have been tested in {stateName}.
               </div>
               <div>
-                <strong>{stateData[0].total} </strong>people have been tested in{' '}
+                <strong>{stateData[0].total} </strong>people have been reported to have been tested in{' '}
                 {stateName} so far.
                 {/* {pending} tests are currently pending results. */}
               </div>
@@ -54,7 +54,7 @@ function StateResults() {
                 {Math.floor(
                   (stateData[0].positive / USAData[0].positive) * 100
                 )}
-                % of all positive cases across the United States.
+                % of all known positive cases across the United States.
               </div>
               <div style={buttonParent}>
                 <Link to={`/${stateName}`}>
