@@ -89,7 +89,7 @@ function StateForm() {
             <strong>
               <div style={titleSpan}>COVID-19 BY STATE</div>
             </strong>
-            <div style={subHeadSmall}>Data updates daily at 4:00 p.m. EST.</div>
+            <div style={subHeadSmall}>Data comes from the <a href="https://covidtracking.com/">Covid Tracking Project</a> and typically updates daily at 4:00 p.m. EST.</div>
             <div style={subHead}>
               {USAData ? USAData[0].positive : ''} people are known to have tested positive
               for COVID-19 in the United States.{' '}
@@ -165,7 +165,7 @@ function StateForm() {
               <div style={titleSpanLarge}>COVID-19 BY STATE</div>
             </strong>
             <div style={subHeadLargeSmall}>
-              Data updates daily at 4:00 p.m. EST.
+              Data comes from the <a href="https://covidtracking.com/">Covid Tracking Project</a> and typically updates daily at 4:00 p.m. EST.
             </div>
             <div style={subHeadLarge}>
               <strong> {USAData ? USAData[0].positive : ''}</strong> people are known to have
