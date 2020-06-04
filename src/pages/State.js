@@ -21,7 +21,7 @@ function State() {
 
 function USA () {
     Axios
-        .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/us`)
+        .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/v1/us/current.json`)
         .then(res => {
             // console.log(res.data)
             setUSAPositive(res.data[0].positive)
@@ -49,7 +49,7 @@ function onClick(event) {
 
     function getData() {
         Axios
-        .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`)
+        .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/v1/states/${state}/current.json`)
         .then(res => {
             if (res.data.length === 0) {
                 setILPositive('');

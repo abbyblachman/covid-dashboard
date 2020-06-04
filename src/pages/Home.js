@@ -26,20 +26,20 @@ function Home() {
   }, []);
 
   function fetchAllStatesData() {
-    Axios.get('https://covidtracking.com/api/states').then(res =>
+    Axios.get('https://covidtracking.com/api/v1/states/current.json').then(res =>
       setAllStatesData(res.data)
     );
   }
 
   function fetchUSAData() {
-    Axios.get('https://covidtracking.com/api/us').then(res =>
+    Axios.get('https://covidtracking.com/api/v1/us/current.json').then(res =>
       setUSAData(res.data)
     );
   }
 
   function fetchStateDataInit() {
     Axios.get(
-      `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${stateName}`
+      `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/v1/states/${stateName}/current.json`
     ).then(res => setStateData(res.data));
   }
 

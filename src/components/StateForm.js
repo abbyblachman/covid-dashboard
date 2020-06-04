@@ -19,7 +19,7 @@ function StateForm() {
   function getData(state) {
     setStateName(state);
     Axios.get(
-      `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?state=${state}`
+      `https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/${state}/current.json`
     ).then(res => setStateData(res.data));
   }
 

@@ -37,13 +37,13 @@ useEffect(() => {
 
 function getData() {
 axios
-.get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${now}`)
+.get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/v1/states/current.json`)
 .then(res => {
     // console.log('in the then')
     if (res.data.error === true) {
         // console.log(res.data)
         axios
-            .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/states/daily?date=${startdate}`)
+            .get(`https://cors-anywhere.herokuapp.com/https://covidtracking.com/api/v1/states/current.json`)
             .then(res => {
                 // console.log('in the if')
                 console.log(res.data.length)
